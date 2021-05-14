@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 class AuthorDashboardController extends Controller
 {
     //
@@ -27,7 +29,15 @@ class AuthorDashboardController extends Controller
     {
         # code...
 
-        return view('dashboard.author.create_post');
+        // $post_code = rand(2320, 99900);
+
+        $post_code = Carbon::now()->timestamp;
+
+        // dd($post_code);
+
+        return view('dashboard.author.create_post',[
+            'post_code' => $post_code
+        ]);
     }
 
     public function trashed_posts() 

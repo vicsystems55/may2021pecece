@@ -5,6 +5,10 @@
  */
 
 require('./bootstrap');
+// require('medium-editor/dist/css/medium-editor.css')
+// require('vuejs-medium-editor/src/themes/default.css')
+// // for the code highlighting
+// require('highlight.js/styles/ocean.css')
 
 window.Vue = require('vue');
 
@@ -26,6 +30,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
 
 const app = new Vue({
     el: '#app',

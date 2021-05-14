@@ -80,4 +80,6 @@ Route::get('auth/{provider}/callback', 'SocialiteController@handleProviderCallba
 
 Auth::routes();
 
+Route::post('/upload_post_asset', 'PostController@upload_post_asset')->name('upload_post_asset');
+
 // Route::get('/home', 'HomeController@index')->name('home');

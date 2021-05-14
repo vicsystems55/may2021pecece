@@ -11,7 +11,9 @@
     <link href="{{config('app.url')}}acara/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="{{config('app.url')}}acara/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="{{config('app.url')}}acara/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{config('app.url')}}meduza/vendor/toastr/css/toastr.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
@@ -208,7 +210,11 @@
 		<!--**********************************
             Content body start
         ***********************************-->
+        <div id="app">
+
             @yield('content')
+
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -243,6 +249,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <script src="{{config('app.url')}}acara/vendor/global/global.min.js"></script>
 	<script src="{{config('app.url')}}acara/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	<script src="{{config('app.url')}}acara/vendor/chart.js/Chart.bundle.min.js"></script>
@@ -258,6 +267,23 @@
 	
 	<!-- Dashboard 1 -->
 	<script src="{{config('app.url')}}acara/js/dashboard/analytics.js"></script>
+
+    <script src="{{config('app.url')}}acara/vendor/toastr/js/toastr.min.js"></script>
+
+<!-- All init script -->
+<script src="{{config('app.url')}}acara/js/plugins-init/toastr-init.js"></script>
+
+
+
+    <!-- Summernote -->
+
+
+    @yield('page-script')
+
+
+
+
+    <script src="{{asset('js/app.js')}}"></script>
 	
 </body>
 </html>
