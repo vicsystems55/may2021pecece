@@ -12,7 +12,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function upload_post_asset(Request $request)
+    public function upload_post_image(Request $request)
     {
         //
 
@@ -32,9 +32,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_post(Request $request)
     {
         //
+
+
+        return $request->all();
+
     }
 
     /**

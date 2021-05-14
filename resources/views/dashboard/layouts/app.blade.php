@@ -10,10 +10,40 @@
 	<link rel="stylesheet" href="{{config('app.url')}}acara/vendor/chartist/css/chartist.min.css">
     <link href="{{config('app.url')}}acara/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="{{config('app.url')}}acara/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{config('app.url')}}acara/vendor/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{config('app.url')}}acara/vendor/chartist/css/chartist.min.css">
     <link href="{{config('app.url')}}acara/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{config('app.url')}}meduza/vendor/toastr/css/toastr.min.css">
+    <link rel="stylesheet" href="{{config('app.url')}}acara/vendor/toastr/css/toastr.min.css">
+
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-typeahead.css" integrity="sha512-wu4jn1tktzX0SHl5qNLDtx1uRPSj+pm9dDgqsrYUS16AqwzfdEmh1JR8IQL7h+phL/EAHpbBkISl5HXiZqxBlQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+
+    <style>
+        .bootstrap-tagsinput{
+            width: 100%;
+            height: 90px;
+        }
+        .label-info{
+            background-color: #FE634E;
+
+        }
+        .form-groupz .label {
+        display: inline-block;
+        padding: .25em .4em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,
+        border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    </style>
 </head>
 <body>
 
@@ -249,6 +279,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="{{asset('js/app.js')}}"></script>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
@@ -268,22 +300,35 @@
 	<!-- Dashboard 1 -->
 	<script src="{{config('app.url')}}acara/js/dashboard/analytics.js"></script>
 
-    <script src="{{config('app.url')}}acara/vendor/toastr/js/toastr.min.js"></script>
 
-<!-- All init script -->
-<script src="{{config('app.url')}}acara/js/plugins-init/toastr-init.js"></script>
 
 
 
     <!-- Summernote -->
 
 
+
+
+
+
+  
+
+    <script src="{{config('app.url')}}acara/vendor/select2/js/select2.full.min.js"></script>
+
+    <script src="{{config('app.url')}}acara/js/plugins-init/select2-init.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous"></script>
+
+    
+
+    <script>
+    $('#tags').tagsinput({
+    allowDuplicates: false
+    });
+    </script>
+
+    
     @yield('page-script')
-
-
-
-
-    <script src="{{asset('js/app.js')}}"></script>
 	
 </body>
 </html>

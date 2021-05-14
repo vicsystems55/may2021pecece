@@ -51,6 +51,8 @@ Route::group(['prefix'=> 'author'], function () {
     
     Route::get('/create_post', 'AuthorDashboardController@create_post')->name('author.create_post');
 
+    Route::get('/edit_post', 'AuthorDashboardController@edit_post')->name('author.edit_post');
+
     Route::get('/trashed_posts', 'AuthorDashboardController@trashed_posts')->name('author.trashed_posts');
     
     Route::get('/draft_posts', 'AuthorDashboardController@draft_posts')->name('author.draft_posts');
@@ -80,6 +82,10 @@ Route::get('auth/{provider}/callback', 'SocialiteController@handleProviderCallba
 
 Auth::routes();
 
-Route::post('/upload_post_asset', 'PostController@upload_post_asset')->name('upload_post_asset');
+Route::post('/upload_post_image', 'PostController@upload_post_image')->name('upload_post_image');
+
+Route::get('/create_post', 'PostController@create_post')->name('create_post');
+
+
 
 // Route::get('/home', 'HomeController@index')->name('home');

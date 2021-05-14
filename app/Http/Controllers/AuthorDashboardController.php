@@ -40,6 +40,21 @@ class AuthorDashboardController extends Controller
         ]);
     }
 
+    public function edit_post() 
+    {
+        # code...
+
+        // $post_code = rand(2320, 99900);
+
+        $post_code = Carbon::now()->timestamp;
+
+        // dd($post_code);
+
+        return view('dashboard.author.edit_post',[
+            'post_code' => $post_code
+        ]);
+    }
+
     public function trashed_posts() 
     {
         # code...

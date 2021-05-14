@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                    <h1>Create Post</h1>
+                    <h1>Edit Post</h1>
 
                     </div>
                     <div class="col-md-6">
@@ -43,18 +43,18 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <button onclick="submit_post()" class="btn btn-success btn-block">Publishing.. 
+                                    <button onclick="submit_post()" class="btn btn-secondary btn-block">Move to draft.. 
                                     <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/>
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-secondary btn-block">Draft
+                                    <button class="btn btn-danger btn-block">Trashed
                                         <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/>
                                     </button>
                                 </div>
 
                                 <div class="col-6 mt-2">
-                                    <button class="btn btn-outline-success btn-block bt-sm">Preview
+                                    <button class="btn btn-outline-success btn-block bt-sm">View Post
                                        
                                     </button>
                                 </div>
