@@ -38,20 +38,23 @@
                                 <span class="badge badge-sm badge-{{$post->status == 'live'?'success':'secondary'}}">{{$post->status}}</span>
                             </td>
                             <td>
-                                {{$post->updated_at->diffForHumans()}}
+                                <form action="">
+                                    <input type="hidden" name="post_code">
+                                    <button class="btn btn-danger">Delete Permanently</button>
+                                </form>
                             </td>
                             <td>
-                                <a  href="{{route('author.edit_post', $post->post_code)}}" class="btn btn-primary shadow">view details</a>
+                                <a  href="{{route('author.edit_post', $post->post_code)}}" class="btn btn-info shadow">view details</a>
                             </td>
                         </tr>
 
                     @empty
 
-                        <div class="container text-center">
+                        <div class="container text-center p-2">
 
-                        <h4 class="text-center">No post yet..</h4>
+                        <h4 class="text-center">Trash is empty..</h4>
 
-                                <a href="{{route('create_post')}}" class="btn btn-primary shadow">create post</a>
+                                <a href="{{route('create_post')}}" class="btn btn-info shadow">create post</a>
 
                         </div>
 

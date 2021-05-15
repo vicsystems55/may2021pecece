@@ -114,11 +114,11 @@ class AuthorDashboardController extends Controller
 
         $user_id = Auth::user()->id;
 
-        $all_posts = Post::with('post_categories')->where('user_id', $user_id)->where('status', 'trashed')->get();
+        $all_posts = Post::with('post_categories')->where('user_id', $user_id)->where('status', 'trash')->get();
 
         $categories = Category::latest()->get();
 
-        return view('dashboard.author.draft_post',[
+        return view('dashboard.author.trashed_post',[
             'all_posts' => $all_posts,
             'categories' => $categories
         ]);
