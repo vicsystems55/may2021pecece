@@ -12,29 +12,30 @@
                     <h1 class="display-4 text-center mb-4 text-primary">Pecece</h11>
                     
                     <h4 class="text-center mb-4 text-primary">Sign up</h4>
-                    <form action="index.html">
+                    <form method="post" action="{{route('register')}}">
+                    @csrf
 
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Fullname</strong></label>
-                            <input type="email" class="form-control" value="hello@example.com">
+                            <input type="text" name="name" class="form-control" value="" placeholder="Fullname">
                         </div>
 
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Username</strong></label>
-                            <input type="email" class="form-control" value="hello@example.com">
+                            <input type="text" name="username" class="form-control" value="Pick a nickname">
                         </div>
 
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Email</strong></label>
-                            <input type="email" class="form-control" value="hello@example.com">
+                            <input type="email" name="email" class="form-control" value="hello@example.com">
                         </div>
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Password</strong></label>
-                            <input type="password" class="form-control" value="Password">
+                            <input type="password" class="form-control" name="password" placeholder="Set a password">
                         </div>
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Confirm Password</strong></label>
-                            <input type="password" class="form-control" value="Password">
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm your password">
                         </div>
 
 

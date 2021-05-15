@@ -13,14 +13,15 @@
                     <h1 class="display-4 text-center mb-4 text-primary">Pecece</h11>
                     
                     <h4 class="text-center mb-4 text-primary">Sign in your account</h4>
-                    <form action="index.html">
+                    <form method="post" action="{{route('login')}}">
+                    @csrf
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Email</strong></label>
-                            <input type="email" class="form-control" value="hello@example.com">
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
                             <label class="mb-1 text-primary"><strong>Password</strong></label>
-                            <input type="password" class="form-control" value="Password">
+                            <input type="password" name="password" class="form-control" value="{{ old('password') }}">
                         </div>
                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                             <div class="form-group">
@@ -39,11 +40,11 @@
                     </form>
 
                     <div class="text-center mt-3">
-                            <button type="submit" class="btn bg-white border border-primary text-primary btn-block">Google Sign In</button>
+                            <a  class="btn bg-white border border-primary text-primary btn-block">Google Sign In</a>
                         </div>
 
                     <div class="new-account mt-3">
-                        <p class="text-primary">Don't have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
+                        <p class="text-primary">Don't have an account? <a class="text-primary" href="{{route('register')}}">Sign up</a></p>
                     </div>
                 </div>
             </div>
