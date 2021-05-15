@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/auth', function () {
+    return view('dashboard.layouts.auth');
 });
 
 
@@ -95,6 +95,8 @@ Route::get('/draft_post', 'PostController@draft_post')->name('draft_post');
 Route::get('/edit_post', 'PostController@edit_post')->name('edit_post');
 
 Route::get('/trash_post', 'PostController@trash_post')->name('trash_post');
+
+
 
 Route::get('/feeds', 'PostController@feeds')->name('feeds');
 
