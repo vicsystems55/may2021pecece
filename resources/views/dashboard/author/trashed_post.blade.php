@@ -14,7 +14,7 @@
         <div class="col-md-12">
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body table-responsive">
             <h6>All Post</h6>
 
                 <table class="table">
