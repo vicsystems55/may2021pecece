@@ -51,7 +51,7 @@ Route::group(['prefix'=> 'author'], function () {
     
     Route::get('/create_post', 'AuthorDashboardController@create_post')->name('author.create_post');
 
-    Route::get('/edit_post', 'AuthorDashboardController@edit_post')->name('author.edit_post');
+    Route::get('/edit_post/{post_code}', 'AuthorDashboardController@edit_post')->name('author.edit_post');
 
     Route::get('/trashed_posts', 'AuthorDashboardController@trashed_posts')->name('author.trashed_posts');
     
@@ -84,7 +84,21 @@ Auth::routes();
 
 Route::post('/upload_post_image', 'PostController@upload_post_image')->name('upload_post_image');
 
+Route::post('/update_post_image', 'PostController@update_post_image')->name('update_post_image');
+
+Route::post('/upload', 'PostController@store')->name('upload.store');
+
 Route::get('/create_post', 'PostController@create_post')->name('create_post');
+
+Route::get('/draft_post', 'PostController@draft_post')->name('draft_post');
+
+Route::get('/edit_post', 'PostController@edit_post')->name('edit_post');
+
+Route::get('/trash_post', 'PostController@trash_post')->name('trash_post');
+
+Route::get('/feeds', 'PostController@feeds')->name('feeds');
+
+
 
 
 

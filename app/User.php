@@ -36,4 +36,76 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts()
+    {
+        # code...
+
+        return $this->hasMany('App\Post', 'user_id', 'id');
+    }
+
+    public function user_likes()
+    {
+        # code...
+
+        return $this->hasMany('App\PostLike', 'user_id', 'id');
+    }
+
+    public function user_unlikes()
+    {
+        # code...
+
+        return $this->hasMany('App\PostUnLike', 'user_id', 'id');
+    }
+
+    public function user_category_subscriptions()
+    {
+        # code...
+
+        return $this->hasMany('App\CategorySubscription', 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        # code...
+
+        return $this->hasMany('App\Comment', 'user_id', 'id');
+    }
+
+    public function users_comments_unlikes()
+    {
+        # code...
+
+        return $this->hasMany('App\CommentUnLike', 'user_id', 'id');
+    }
+
+    public function users_comments_likes()
+    {
+        # code...
+
+        return $this->hasMany('App\CommentLike', 'user_id', 'id');
+    }
+
+    public function notifications()
+    {
+        # code...
+
+        return $this->hasMany('App\Notification', 'user_id', 'id');
+    }
+
+
+
+    public function followers()
+    {
+        # code...
+
+        return $this->hasMany('App\Follower', 'user_id', 'id');
+    }
+
+    public function authors()
+    {
+        # code...
+
+        return $this->hasMany('App\Follower', 'author_id', 'id');
+    }
 }

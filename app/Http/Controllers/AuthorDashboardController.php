@@ -4,7 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
+use App\PostUnLike;
+
+use App\PostLike;
+
+use App\Post;
+
+use App\Notification;
+
+use App\Follower;
+
+use App\CommentUnLike;
+
+use App\CommentLike;
+
+use App\Comment;
+
+use App\CategorySubscription;
+
+use App\Category;
+
 use Carbon\Carbon;
+
+use Auth;
 
 class AuthorDashboardController extends Controller
 {
@@ -21,8 +45,13 @@ class AuthorDashboardController extends Controller
     public function all_posts() 
     {
         # code...
+        $user_id = Auth::user()->id;
 
-        return view('dashboard.author.all_posts');
+        $all_posts = Post::whereIn('status', ['live', 'draft', 'trashed'])->where('user_id', $user_id)->latest()->get();
+
+        return view('dashboard.author.all_posts',[
+            'all_posts' => $all_posts
+        ]);
     }
 
     public function create_post() 
@@ -31,27 +60,47 @@ class AuthorDashboardController extends Controller
 
         // $post_code = rand(2320, 99900);
 
+        $categories = Category::latest()->get();
+
         $post_code = Carbon::now()->timestamp;
+
+        $user_id = Auth::user()->id;
+
+        $post_session = Post::create([
+            "user_id" => $user_id,
+            "post_code" => $post_code,
+            "post_title" => 'session',
+            "post_description" => 'session',
+            "post_tags" => 'session',
+            "post_body" => 'session',
+            "category_id" => 1,
+            "featured_image" => 'default.png',
+            "status" => 'session',
+        ]);
 
         // dd($post_code);
 
         return view('dashboard.author.create_post',[
-            'post_code' => $post_code
+            'post_code' => $post_session->post_code,
+            'categories' => $categories
         ]);
     }
 
-    public function edit_post() 
+    public function edit_post($post_code) 
     {
         # code...
 
         // $post_code = rand(2320, 99900);
 
-        $post_code = Carbon::now()->timestamp;
+        // $post_code = Carbon::now()->timestamp;
 
-        // dd($post_code);
+        $post_data = Post::with('post_categories')->where('post_code', $post_code)->first();
+
+        $categories = Category::latest()->get();
 
         return view('dashboard.author.edit_post',[
-            'post_code' => $post_code
+            'post_data' => $post_data,
+            'categories' => $categories
         ]);
     }
 
@@ -59,14 +108,40 @@ class AuthorDashboardController extends Controller
     {
         # code...
 
-        return view('dashboard.author.trashed_post');
+        // $post_code = rand(2320, 99900);
+
+        // $post_code = Carbon::now()->timestamp;
+
+        $user_id = Auth::user()->id;
+
+        $all_posts = Post::with('post_categories')->where('user_id', $user_id)->where('status', 'trashed')->get();
+
+        $categories = Category::latest()->get();
+
+        return view('dashboard.author.draft_post',[
+            'all_posts' => $all_posts,
+            'categories' => $categories
+        ]);
     }
 
     public function draft_posts() 
     {
         # code...
 
-        return view('dashboard.author.draft_post');
+        // $post_code = rand(2320, 99900);
+
+        // $post_code = Carbon::now()->timestamp;
+
+        $user_id = Auth::user()->id;
+
+        $all_posts = Post::with('post_categories')->where('user_id', $user_id)->where('status', 'draft')->get();
+
+        $categories = Category::latest()->get();
+
+        return view('dashboard.author.draft_post',[
+            'all_posts' => $all_posts,
+            'categories' => $categories
+        ]);
     }
 
     public function authors_feed() 

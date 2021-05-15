@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                    <h1>Edit Post</h1>
+                    <h1>{{$post_data->post_title}}</h1>
 
                     </div>
                     <div class="col-md-6">
@@ -42,19 +42,25 @@
                             <div class="card-body">
 
                             <div class="row">
-                                <div class="col-6">
-                                    <button onclick="submit_post()" class="btn btn-secondary btn-block">Move to draft.. 
-                                    <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/>
+                                <div class="col-md-6">
+                                    <button onclick="submit_post()" class="btn btn-success btn-block">Re-publish
+                                    <!-- <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/> -->
                                     </button>
                                 </div>
-                                <div class="col-6">
-                                    <button class="btn btn-danger btn-block">Trashed
-                                        <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/>
+                                <div class="col-md-6">
+                                    <button onclick="draft_post()" class="btn btn-secondary btn-block">Move to Draft
+                                        <!-- <img width="20px;" height="20px;" src="{{config('app.url')}}loader.gif"/> -->
                                     </button>
                                 </div>
 
-                                <div class="col-6 mt-2">
-                                    <button class="btn btn-outline-success btn-block bt-sm">View Post
+                                <div class="col-md-6 mt-2">
+                                    <button class="btn btn-outline-success btn-block bt-sm">Preview
+                                       
+                                    </button>
+                                </div>
+
+                                <div class="col-md-6 mt-2">
+                                    <button onclick="trashed_post()" class="btn btn-danger btn-block bt-sm">Trashed
                                        
                                     </button>
                                 </div>
@@ -72,7 +78,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <h4>Post Title</h4>
-                                <input id="post_title" type="text" class="form-control">
+                                <input id="post_title" type="text" value="{{$post_data->post_title}}" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -85,7 +91,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <h4>Post Description</h4>
-                                <textarea class="form-control" name="post_description" id="post_description" rows="5"></textarea>
+                                <textarea class="form-control" name="post_description" id="post_description" rows="5">{{$post_data->post_description}}</textarea>
                                 
                             </div>
                         </div>
@@ -99,20 +105,22 @@
                             <div class="card-body">
                                 <div class="form-group ">
                                     <h4>Category</h4>
-                                    <select name="" id="post_category" class="form-control">
-                                        <option value="Sports">Sports</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Politics">Politics</option>
-                                        <option value="Sports">Sports</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Politics">Politics</option>
+                                    <select name="category_id" id="post_category" class="form-control">
+                                    <option value="{{$post_data->post_categories->id}}">{{$post_data->post_categories->name}}</option>
+                                    @forelse($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @empty
+                                    <option value="0">Uncategorized</option>
+                                    @endforelse
+
+
                                     </select>
                                     
                                 </div>
 
                                 <div class="form-groupz ">
                                 <h4>Tags</h4>
-                                <input id="tags" class="form-control" type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" >
+                                <input id="tags" class="form-control" type="text" value="{{$post_data->post_tags}}" data-role="tagsinput" >
                                 </div>
                             </div>
                         </div>
@@ -125,16 +133,21 @@
 
                         <!-- <div style="width:230px; height:230px;" class="featured_img"></div> -->
 
-                        <img id="featured_image" style="object-fit: cover;" class="mx-auto shadow" width="230px;" height="230px;" src="{{config('app.url')}}post_images/default.png" alt="">
+                        <img id="featured_image" style="object-fit: cover;" class="mx-auto shadow" width="230px;" height="230px;" src="{{config('app.url')}}post_images/{{$post_data->featured_image}}" alt="">
                          
-                            <form action="{{route('upload_post_image')}}" method="post">
-                                @csrf
-
-                                <input type="hidden" name="post_code" value="{{$post_code}}">
-
-                                <input type="file" class="form-control">
-
-                            </form>
+                        <form method="POST" enctype="multipart/form-data" id="laravel-ajax-file-upload" action="javascript:void(0)" >
+                            <div class="">
+                                <div class="">
+                                    <div class="form-group">
+                                        <input onchange="loadFile(event)" class="form-control"  type="file" name="image" placeholder="Choose File" id="file">
+                                        <input type="hidden" name="post_code" id="post_code" value="{{$post_data->post_code}}">
+                                        
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">submit</button>
+                                    </div>
+                                        
+                            </div>     
+                        </form> 
                             
                         </div>
                     </div>
@@ -152,13 +165,14 @@
                                 <h4 class="card-title">Post Body</h4>
                             </div>
                             <div class="card-body">
-                                <div class="summernote" ></div>
+                                <div class="summernote" >
+                                    {!!$post_data->post_body!!}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-             
             
 
             </div>
@@ -192,13 +206,17 @@
 
         var post_category = $( "#post_category" ).val();
 
-        var post_tags = $("#tags").tagsinput('items');
+        var post_code = $( "#post_code" ).val();
+
+        var post_tags = $("#tags").val();
 
         var featured_image = $('#featured_image').attr('src');
 
         var post_body = $('.summernote').summernote('code');
 
-        alert(post_tags);
+    
+
+      alert(post_code);
 
         if (post_title.length < 4) {
 
@@ -218,7 +236,7 @@
             $error2 = 0;
         }
 
-        if (post_category.length < 4) {
+        if (post_category == 0) {
 
             toastr.error('Post category required');
 
@@ -227,7 +245,7 @@
             $error3 = 0;
         }
 
-        if ($('#featured_image').attr('src') == "{{config('app.url')}}post_images/defaul.png") {
+        if ($('#featured_image').attr('src') == "{{config('app.url')}}post_images/default.png") {
 
             toastr.error('Post image is required');
 
@@ -236,7 +254,7 @@
                 $error4 = 0;
             }
 
-        if (post_body.length < 10) {
+        if (post_body.length < 15) {
 
             toastr.error('Post body not valid');
 
@@ -245,35 +263,46 @@
             $error5 = 0;
         }
 
-        alert($error1);
+        if (post_tags.length == 0) {
+
+        toastr.info('No post tags, this helps optimization of your post');
+
+        }else{
+
+        $error6 = 0;
+        }
+
+       
 
         if ($error1  == 0 && $error2  == 0 && $error3  == 0 && $error4  == 0 && $error5 == 0) {
 
-            alert('yes');
-
+           alert('jk');
                 $.ajax({
                     type:'GET',
-                    url: "{{ route('create_post')}}",
+                    url: "{{ route('edit_post')}}",
                         data:
-                    {
-                        post_title: post_title,
-                        post_description: post_description,
-                        post_category: post_category,
-                        post_tags: post_tags,
-                        featured_image: featured_image,
-                        post_body: post_body
-                    },
+                            {
+                                post_title: post_title,
+                                post_description: post_description,
+                                category_id: post_category,
+                                post_tags: post_tags,
+                                post_code: post_code,
+                                post_body: post_body,
+                                status: 'live'
+                            },
          
 
                     success: (data) => {
 
                         console.log(data);
                     
-                    alert('File has been uploaded successfully');
+                        toastr.success('Post created updated!!');
                
                     },
 
                  error: function(data){
+
+                    toastr.error('error');
 
                  console.log(data);
                 
@@ -303,6 +332,282 @@
 
         console.log(post_body);
         
+    }
+
+
+    function draft_post(params) {
+
+        var post_title = $( "#post_title" ).val();
+
+        var post_description = $( "#post_description" ).val();
+
+        var post_category = $( "#post_category" ).val();
+
+        var post_code = $( "#post_code" ).val();
+
+        var post_tags = $("#tags").val();
+
+        var featured_image = $('#featured_image').attr('src');
+
+        var post_body = $('.summernote').summernote('code');
+
+        if (post_title.length < 4) {
+
+            toastr.error('Post title required');
+
+        }else{
+
+            $error1 = 0;
+        }
+
+        if (post_description.length < 4) {
+
+            toastr.error('Post description required');
+
+        }else{
+
+            $error2 = 0;
+        }
+
+        if (post_category == 0) {
+
+            toastr.error('Post category required');
+
+        }else{
+
+            $error3 = 0;
+        }
+
+        if ($('#featured_image').attr('src') == "{{config('app.url')}}post_images/default.png") {
+
+            toastr.error('Post image is required');
+
+            }else{
+
+                $error4 = 0;
+            }
+
+        if (post_body.length < 15) {
+
+            toastr.error('Post body not valid');
+
+        }else{
+
+            $error5 = 0;
+        }
+
+        if (post_tags.length == 0) {
+
+        toastr.info('No post tags, this helps optimization of your post');
+
+        }else{
+
+        $error6 = 0;
+        }
+
+
+
+        if ($error1  == 0 && $error2  == 0 && $error3  == 0 && $error4  == 0 && $error5 == 0) {
+
+        alert('hjhjh');
+                $.ajax({
+                    type:'GET',
+                    url: "{{ route('create_post')}}",
+                        data:
+                            {
+                                post_title: post_title,
+                                post_description: post_description,
+                                category_id: post_category,
+                                post_tags: post_tags,
+                                post_code: post_code,
+                                post_body: post_body,
+                                status: 'draft'
+                            },
+        
+
+                    success: (data) => {
+
+                        console.log(data);
+                    
+                        toastr.success('Post saved to draft');
+            
+                    },
+
+                error: function(data){
+
+                console.log(data);
+                
+                }
+
+                });
+            
+        }
+
+
+
+
+
+
+
+        // toastr.error('Post description required');
+
+        // toastr.error('Post Body required');
+
+        // toastr.error('Invalid Category Selection');
+
+        // toastr.error('Featured image required');
+
+
+
+
+
+        console.log(post_body);
+
+}
+
+function trashed_post(params) {
+
+
+    var post_code = $( "#post_code" ).val();
+
+
+        $.ajax({
+            type:'GET',
+            url: "{{ route('trash_post')}}",
+                data:
+                    {
+                      
+                        post_code: post_code
+                   
+                    },
+
+
+            success: (data) => {
+
+                console.log(data);
+            
+                toastr.success('Post moved to trash');
+    
+            },
+
+            error: function(data){
+
+            console.log(data);
+            
+            }
+
+        });
+
+
+
+console.log(post_body);
+
+}
+
+</script>
+
+<script type="text/javascript">
+    
+          
+
+                $('#laravel-ajax-file-upload').submit(function(e) {
+
+                    $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var post_code = $( "#post_code" ).val();
+
+                alert($('meta[name="csrf-token"]').attr('content'));
+
+                
+
+                    // e.preventDefault();
+                    
+                    var formData = new FormData(this);
+
+                    formData.append('post_code', post_code);
+                     
+                    // console.log(formData)
+                
+                        $.ajax({
+                            url:"{{ route('update_post_image') }}",
+                            method:"POST",
+                            data: formData,
+                            
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            success: (data) => {
+                            
+                                toastr.success('Featured image updated successfully!!');
+
+                            console.log(data);
+                
+                            },
+                            error: function(data){
+                                
+                                toastr.error('Error occured uploading image');
+
+                            console.log(data);
+            
+                            }
+
+                        });
+
+                });
+
+       
+</script>
+
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('featured_image');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+    </script>
+
+<script>
+
+    function upload_image() {
+
+        $image_element = document;
+
+        console.log($image_element);
+
+        var formData = new FormData();
+
+        alert('form data')
+
+        console.log(formData)
+            
+            $.ajax({
+                type:'POST',
+                url: "{{ route('upload_post_image')}}",
+                enctype: 'multipart/form-data',
+                data: formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+
+                success: (data) => {
+                
+                alert('File has been uploaded successfully');
+
+                console.log(data);
+                
+                },
+                error: function(data){
+                console.log(data);
+        
+                }
+
+            });
     }
 
 </script>

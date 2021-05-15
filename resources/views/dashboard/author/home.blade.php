@@ -56,7 +56,7 @@
                                         </svg>
                                     </span>
                                     <div class="media-body ml-1">
-                                        <p class="mb-2">Last Than Year</p>
+                                        <p class="mb-2">Total Views</p>
                                         <div class="d-flex align-items-center">
                                             <h3 class="mb-0 mr-3 text-black font-w600">59%</h3>
                                             <svg width="29" height="15" viewBox="0 0 29 15" fill="none" xmlns="http://www.w3.org/2000/svg">

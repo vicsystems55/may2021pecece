@@ -12,5 +12,24 @@ class PostSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('users')->insertOrIgnore([
+
+            [
+                "user_id" => 1,
+                "post_code" => Carbon::now()->timestamp,
+                "post_title" => 
+                "post_description" => 
+                "post_tags" => 
+                "post_body" => 
+                "category_id" => 
+                "featured_image" => 
+                "status" => 
+            ],
+            
+            
+        ]);
+            
     }
 }
+
+

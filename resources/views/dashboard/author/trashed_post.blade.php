@@ -20,42 +20,46 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Time</th>
-                            <th></th>
+                            <td>Title</td>
+                            <td>Status</td>
+                            <td>Last Update</td>
+                            <td>More</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+
+                    @forelse($all_posts as $post)
+
+                    <tr>
                             <td>
-                            Maria
+                                {{$post->post_title}}
                             </td>
                             <td>
-                                new
+                                <span class="badge badge-sm badge-{{$post->status == 'live'?'success':'secondary'}}">{{$post->status}}</span>
                             </td>
                             <td>
-                                new
+                                {{$post->updated_at->diffForHumans()}}
                             </td>
                             <td>
-                                <button class="btn btn-primary shadow">view details</button>
+                                <a  href="{{route('author.edit_post', $post->post_code)}}" class="btn btn-primary shadow">view details</a>
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                New Session
-                            </td>
-                            <td>
-                                new
-                            </td>
-                            <td>
-                                new
-                            </td>
-                            <td>
-                                <button class="btn btn-primary shadow">view details</button>
-                            </td>
-                        </tr>
+                    @empty
+
+                        <div class="container text-center">
+
+                        <h4 class="text-center">No post yet..</h4>
+
+                                <a href="{{route('create_post')}}" class="btn btn-primary shadow">create post</a>
+
+                        </div>
+
+                    @endforelse
+
+
+
+
                     </tbody>
                 </table>
 

@@ -15,6 +15,13 @@ class CreateCommentUnLikesTable extends Migration
     {
         Schema::create('comment_un_likes', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('comment_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+
+            $table->foreign('comment_id')->references('id')->on('comments');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
