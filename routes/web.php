@@ -32,7 +32,7 @@ Route::get('/auth', function () {
 
     Route::get('/search_results', 'FrontPageController@search_results')->name('search_results');
 
-    Route::get('/single_post', 'FrontPageController@single_post')->name('single_post');
+    Route::get('/single_post/{post_code}', 'FrontPageController@single_post')->name('single_post');
 
 
 

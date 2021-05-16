@@ -54,9 +54,9 @@
                                 </div>
 
                                 <div class="col-md-6 mt-2">
-                                    <button class="btn btn-outline-success btn-block bt-sm">Preview
+                                    <a href="{{route('single_post', $post_code)}}" class="btn btn-outline-success btn-block bt-sm">Preview
                                        
-                                    </button>
+                                    </a>
                                 </div>
 
                             </div>

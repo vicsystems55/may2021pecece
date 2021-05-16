@@ -2,38 +2,32 @@
                                 <div class="_block popular">
                                     <h3 class="block_title">Popular posts</h3>
                                     <div class="_items">
-                                        <a href="post-page-right-sidebar.html" class="item">
-                                            <div class="img ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                            </div>
-                                            <div class="category">Fashion</div>
-                                            <h4 class="_title">
-                                                The point of using Lorem Ipsum is that it has a more-or-less normal
-                                            </h4>
-                                            <div class="date">October 26, 2018</div>
-                                        </a>
+
+                                        @forelse($popular_posts as $post)
 
                                         <a href="post-page-right-sidebar.html" class="item">
                                             <div class="img ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
+                                                <img src="{{config('app.url')}}post_images/{{$post->featured_image}}" alt="">
                                             </div>
-                                            <div class="category">Fashion</div>
+                                            <div class="category">{{$post->post_categories->name}}</div>
                                             <h4 class="_title">
-                                                Lorem Ipsum is that it has a more-or-less normal
+                                                {{$post->post_title}}
                                             </h4>
-                                            <div class="date">October 26, 2018</div>
+                                            <div class="date">{{$post->updated_at->format('M')}} {{$post->updated_at->format('d')}} , {{$post->updated_at->format('Y')}}</div>
                                         </a>
 
-                                        <a href="post-page-right-sidebar.html" class="item">
-                                            <div class="img ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                            </div>
-                                            <div class="category">Fashion</div>
-                                            <h4 class="_title">
-                                                On the other hand
-                                            </h4>
-                                            <div class="date">October 26, 2018</div>
-                                        </a>
+
+                                        @empty
+
+
+                                        @endforelse
+                                       
+
+                                       
+
+
+
+
                                     </div>
                                 </div>
                                 <div class="_block subscribe-block">
@@ -51,80 +45,51 @@
                                 <div class="_block categories">
                                     <h3 class="block_title">Categories</h3>
                                     <div class="items">
+                                    @forelse($categories as $category)
+
                                         <a href="blog-right-sidebar.html" class="item">
                                             <div class="_icon ie-img">
                                                 <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
                                             </div>
-                                            <div class="_title">Fashion</div>
-                                            <div class="_count">09</div>
+                                            <div class="_title">{{$category->name}}</div>
+                                            <div class="_count">{{$category->posts->count()}}</div>
                                         </a>
-                                        <a href="blog-right-sidebar.html" class="item">
-                                            <div class="_icon ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                            </div>
-                                            <div class="_title">Lifestyle</div>
-                                            <div class="_count">09</div>
-                                        </a>
-                                        <a href="blog-right-sidebar.html" class="item">
-                                            <div class="_icon ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                            </div>
-                                            <div class="_title">Culture</div>
-                                            <div class="_count">09</div>
-                                        </a>
-                                        <a href="blog-right-sidebar.html" class="item">
-                                            <div class="_icon ie-img">
-                                                <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                            </div>
-                                            <div class="_title">Shopping</div>
-                                            <div class="_count">09</div>
-                                        </a>
+
+                                    @empty
+
+                                    <h6 class="text-center">No Categories...</h6>
+
+
+                                    @endforelse
+
+                                   
                                     </div>
                                 </div>
                                 <div class="_block posts-slider">
                                     <div class="slider" id="posts-slider">
-                                        <a href="blog-right-sidebar.html" class="slide" style="background-image: url(img/demo-bg.jpg);">
+                                    @forelse($featured_posts as $post)
+
+                                        <a href="blog-right-sidebar.html" class="slide" style="background-image: url({{config('app.url')}}post_images/{{$post->posts->featured_image}});">
                                             <div class="_info">
-                                                <div class="_category">Fashion</div>
+                                                <div class="_category">{{$post->posts->post_categories->name}}</div>
                                                 <h4 class="_title">
-                                                    Sydney’s newest northern beaches all-star pub, The Collaroy, is now open
+                                                    {{$post->post_title}}
                                                 </h4>
                                                 <div class="_author">
                                                     <div class="userpic ie-img">
-                                                        <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
+                                                        <img src="{{config('app.url')}}avatars/{{$post->posts->post_authors->avatar}}" alt="">
                                                     </div>
-                                                    <p>By Maya Delia – July 26, 2019</p>
+                                                    <p>By {{$post->posts->post_authors->name}} – {{$post->posts->updated_at->format('M')}} {{$post->posts->updated_at->format('d')}} , {{$post->posts->updated_at->format('Y')}}</p>
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="blog-right-sidebar.html" class="slide" style="background-image: url(img/demo-bg.jpg);">
-                                            <div class="_info">
-                                                <div class="_category">Fashion</div>
-                                                <h4 class="_title">
-                                                    Lorem Ipsum is that it has a more-or-less normal
-                                                </h4>
-                                                <div class="_author">
-                                                    <div class="userpic ie-img">
-                                                        <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                                    </div>
-                                                    <p>By Maya Delia – July 26, 2019</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="blog-right-sidebar.html" class="slide" style="background-image: url(img/demo-bg.jpg);">
-                                            <div class="_info">
-                                                <div class="_category">Travel</div>
-                                                <h4 class="_title">
-                                                    The point of using Lorem Ipsum is that it has a more-or-less normal
-                                                </h4>
-                                                <div class="_author">
-                                                    <div class="userpic ie-img">
-                                                        <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                                                    </div>
-                                                    <p>By Maya Delia – July 26, 2019</p>
-                                                </div>
-                                            </div>
-                                        </a>
+
+
+                                    @empty
+
+                                    @endforelse
+
+                                    
                                     </div>
                                 </div>
                                 <div class="_block popular popular-news">
