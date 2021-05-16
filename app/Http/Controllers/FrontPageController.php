@@ -62,8 +62,12 @@ class FrontPageController extends Controller
 
     public function blog()
     {
+
+        $all_posts = Post::with('post_authors')->with('post_categories')->where('status', 'live')->latest()->get();
         
-        return view('front_page.pages.blog');
+        return view('front_page.pages.blog',[
+            'all_posts' => $all_posts
+        ]);
     }
 
     public function search_results()

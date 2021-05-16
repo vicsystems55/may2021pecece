@@ -22,7 +22,7 @@
                     </div>
                     <div class="footer_bottom">
                         <div class="left">
-                            © Copyright 2019
+                            © Copyright {{\Carbon\Carbon::now()->format('Y')}}
                         </div>
                         <div class="center">
                             <ul>
@@ -32,7 +32,7 @@
                             </ul>
                         </div>
                         <div class="right">
-                            Powered by <a href="https://hellodigi.ru" target="_blank">hellodigi.ru</a>
+                            Powered by <a href="https://vicsystems.com.ng" target="_blank">vicSystems</a>
                         </div>
                     </div>
                 </div>
