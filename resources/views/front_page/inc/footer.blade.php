@@ -26,9 +26,9 @@
                         </div>
                         <div class="center">
                             <ul>
-                                <li><a href="about.html"><span>About Meduza</span></a></li>
-                                <li><a href="static.html"><span>Privacy Policy</span></a></li>
-                                <li><a href="contacts.html"><span>Contact us</span></a></li>
+                                <li><a href="{{route('about')}}"><span>About Pecece</span></a></li>
+                                <li><a href=""><span>Privacy Policy</span></a></li>
+                                <li><a href="{{route('contact')}}"><span>Contact us</span></a></li>
                             </ul>
                         </div>
                         <div class="right">
