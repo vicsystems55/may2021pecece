@@ -224,7 +224,7 @@
 
                         @forelse($latest_posts as $post)
 
-                        <a href="post-page-fullwidth.html" class="post">
+                        <a href="{{route('single_post', $post->post_code)}}" class="post">
                                 <div class="_image ie-img">
                                     <img src="{{config('app.url')}}post_images/{{$post->featured_image}}" alt="">
                                 </div>
