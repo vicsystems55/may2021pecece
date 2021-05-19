@@ -22,7 +22,7 @@
                                     </span>
                                     <div class="media-body ml-1">
                                         <p class="mb-2">Total Post</p>
-                                        <h3 class="mb-0 text-black font-w600">$126,000</h3>
+                                        <h3 class="mb-0 text-black font-w600">{{$my_posts->count()}}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                     </span>
                                     <div class="media-body ml-1">
                                         <p class="mb-2">Total Followers</p>
-                                        <h3 class="mb-0 text-black font-w600">109,511</h3>
+                                        <h3 class="mb-0 text-black font-w600">0</h3>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                     <div class="media-body ml-1">
                                         <p class="mb-2">Total Views</p>
                                         <div class="d-flex align-items-center">
-                                            <h3 class="mb-0 mr-3 text-black font-w600">59</h3>
+                                            <h3 class="mb-0 mr-3 text-black font-w600">{{$my_posts->where('status', 'live')->sum('views')}}</h3>
                                             <svg width="29" height="15" viewBox="0 0 29 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M0 15L14.5 -1.27353e-06L29 15" fill="#21B830"></path>
                                             </svg>
@@ -233,35 +233,26 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Time</th>
+                                            <th>Details</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <img wdith="100px;" height="100px;" class="border" src="" alt="">
-                                            </td>
-                                            <td>
-                                                new
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-primary shadow">view details</button>
-                                            </td>
-                                        </tr>
+                                        @foreach ($my_posts->take(5) as $post)
 
                                         <tr>
+
+                                            <td>#</td>
+                                            <td>{{$post->post_title}}</td>
+                                            <td>{{$post->post_description}}</td>
                                             <td>
-                                                New Session
-                                            </td>
-                                            <td>
-                                                new
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-primary shadow">view details</button>
+                                                <a href="{{route('author.edit_post', $post->post_code)}}" class="btn btn-primary btn-sm">view</a>
                                             </td>
                                         </tr>
+                                            
+                                        @endforeach
                                     </tbody>
                                 </table>
 

@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'admin'],'prefix'=> 'admin'], function ()
 
 
 
-Route::group(['prefix'=> 'author'], function () {
+Route::group(['middleware' => ['auth'],'prefix'=> 'author'], function () {
 
     Route::get('/', 'AuthorDashboardController@home')->name('author.home');
 

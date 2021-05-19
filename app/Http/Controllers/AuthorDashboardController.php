@@ -38,8 +38,13 @@ class AuthorDashboardController extends Controller
     public function home() 
     {
         # code...
+        $user_id = Auth::user()->id;
 
-        return view('dashboard.author.home');
+        $my_posts = Post::where('user_id', $user_id)->where('status', '!=','session')->latest()->get();
+
+        return view('dashboard.author.home',[
+            'my_posts' => $my_posts
+        ]);
     }
 
     public function all_posts() 
