@@ -41,11 +41,15 @@ class SocialiteController extends Controller
 
         }else{
 
+            $demail = $user->getEmail();
+            $new_username = substr($demail, 0, strpos($demail, '@'));
+      
            
 
             $user_data = User::create([
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
+                'username' => $new_username,
                 'avatar' => $user->getAvatar(),
                 'provider' =>$provider,
                 'provider_id' => $user->getId(),
