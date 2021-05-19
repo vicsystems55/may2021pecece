@@ -93,6 +93,10 @@ class FrontPageController extends Controller
     public function single_post($post_code)
     {
 
+        $update_views = Post::where('post_code', $post_code)->where('status', 'live')->increment('views', 1);
+
+        // dd($update_views);
+
         $post_data = Post::with('post_categories')->with('post_authors')->with('comments')->where('post_code', $post_code)->first();
 
         $popular_posts = Post::with('post_categories')->with('post_authors')->with('comments')->where('views', '>', '12')->get();

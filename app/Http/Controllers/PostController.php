@@ -173,6 +173,26 @@ class PostController extends Controller
      
 
     }
+    public function get_views()
+    {
+        # code...
+
+       $user_id = Auth::user()->id;
+
+       $monthly_views = array();
+
+       for ($i=4; $i < 12 ; $i++) { 
+
+        $views = Post::where('user_id', $user_id)->whereMonth('updated_at', '=', $i)->sum('views');
+
+        array_push($monthly_views, $views);
+
+           # code...
+       }
+
+
+        return $monthly_views;
+    }
 
     /**
      * Store a newly created resource in storage.

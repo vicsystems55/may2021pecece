@@ -70,10 +70,9 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+            <a href="{{route('home')}}" class="brand-logo">
+   
+                <img max-width="90px;" max-height="90px;" class="brand-title" src="{{config('app.url')}}logo.png" alt="ff">
             </a>
 
             <div class="nav-control">
@@ -161,7 +160,7 @@
 											 <li>
 												<div class="timeline-panel">
 													<div class="media mr-2">
-														<img alt="image" width="50" src="images/avatar/1.jpg">
+														<img alt="image" width="50" src="{{config('app.url')}}acara/images/avatar/1.jpg">
 													</div>
 													<div class="media-body">
 														<h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -309,6 +308,16 @@
 	
 	<!-- Dashboard 1 -->
 	<script src="{{config('app.url')}}acara/js/dashboard/analytics.js"></script>
+
+    
+
+
+
+
+
+    <!-- Chart ChartJS plugin files -->
+
+    <script src="{{config('app.url')}}acara/js/plugins-init/chartjs-init.js"></script>
 
 
 

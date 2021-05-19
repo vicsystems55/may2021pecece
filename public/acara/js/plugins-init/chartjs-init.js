@@ -6,25 +6,37 @@
 	} */
 
  var dzSparkLine = function(){
+
+
+
+
+
 	let draw = Chart.controllers.line.__super__.draw; //draw shadow
 	
 	var screenWidth = $(window).width();
 	
 	var barChart1 = function(){
+
+
+
 		if(jQuery('#barChart_1').length > 0 ){
 			const barChart_1 = document.getElementById("barChart_1").getContext('2d');
-			
-			barChart_1.height = 100;
 
-			new Chart(barChart_1, {
+			var ctx = document.getElementById("barChart_1");
+			ctx.height = 100;
+			
+			// barChart_1.height = 100;
+
+			var dchart = new Chart(barChart_1, {
+				responsive: true,
 				type: 'bar',
 				data: {
 					defaultFontFamily: 'Poppins',
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+					labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
 					datasets: [
 						{
-							label: "My First dataset",
-							data: [65, 59, 80, 81, 56, 55, 40],
+							label: "Total Views",
+							data: [5,5,4,5],
 							borderColor: 'rgba(254, 99, 78, 1)',
 							borderWidth: "0",
 							backgroundColor: 'rgba(254, 99, 78, 1)'
@@ -34,10 +46,13 @@
 				options: {
 					legend: false, 
 					scales: {
+
 						yAxes: [{
 							ticks: {
-								beginAtZero: true
-							}
+								beginAtZero: true,
+								stepSize: 10
+							},
+							
 						}],
 						xAxes: [{
 							// Change here
@@ -46,6 +61,40 @@
 					}
 				}
 			});
+
+			
+				
+				// alert('al');
+				$.ajax({
+					type:'GET',
+					url: "/get_views",
+					
+				
+					cache:false,
+					contentType: false,
+					processData: false,
+			
+					success: (data) => {
+
+						console.log(data)
+			
+						// console.log(dchart.data.datasets[0].data[0]);
+		
+
+						dchart.data.datasets[0].data = data;
+						dchart.update(); 
+			
+				
+					},
+					error: function(data){
+					console.log(data);
+			
+					}
+			
+				});
+
+
+			
 		}
 	}
 	

@@ -96,9 +96,11 @@ Route::get('/edit_post', 'PostController@edit_post')->name('edit_post');
 
 Route::get('/trash_post', 'PostController@trash_post')->name('trash_post');
 
-
+Route::get('/choose', 'ChooseRoleController@choose')->name('choose');
 
 Route::get('/feeds', 'PostController@feeds')->name('feeds');
+
+Route::get('/get_views', 'PostController@get_views')->name('get_views');
 
 
 
