@@ -6,6 +6,8 @@
     <div class="container-fluid">
         <!-- Add Order -->
 
+        <h1>Hi, {{Auth::user()->username}}</h1>
+
                 <div class="row">
 
                     <div class="col-lg-4 col-sm-6">
