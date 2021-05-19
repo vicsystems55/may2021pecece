@@ -29,9 +29,12 @@
                     <div class="top_right">
                         <div class="search" id="search-link">
                             <div class="search-open"></div>
+                      
+                           
                         </div>
-                        <a  href="cart.html" class="cart">
-                            <span style="width: 120px; height: 120px;" >Sign Up</span>
+                     
+                        <a style="background-color: red;"  href="{{route('author.home')}}" class="cart ">
+                            <span style="width: 220px; height: 220px;" >Sign Up</span>
                         </a>
                     </div>
                 </div>

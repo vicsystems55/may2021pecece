@@ -40,7 +40,7 @@
                     </form>
 
                     <div class="text-center mt-3">
-                            <a  class="btn bg-white border border-primary text-primary btn-block">Google Sign In</a>
+                            <a href="/auth/google" class="btn bg-white border border-primary text-primary btn-block">Google Sign In</a>
                         </div>
 
                     <div class="new-account mt-3">
