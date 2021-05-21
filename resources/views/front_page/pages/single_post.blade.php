@@ -25,7 +25,7 @@
                                         {{$post_data->post_title}}
                                     </h2>
 
-                                    <likeunlike-component></likeunlike-component>
+                                    <likeunlike-component user_id="{{Auth::user()->id}}" post_id="{{$post_data->id}}"></likeunlike-component>
 
 
                                     <h4>{{$post_comments->count()}} Comments</h4>

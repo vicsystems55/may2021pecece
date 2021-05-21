@@ -105,6 +105,21 @@ Route::get('/feeds', 'PostController@feeds')->name('feeds');
 Route::get('/get_views', 'PostController@get_views')->name('get_views');
 
 
+Route::get('/getLikes', 'PostController@getLikes')->name('getLikes');
+
+Route::get('/getUnikes', 'PostController@getUnikes')->name('getUnikes');
+
+Route::get('/registerLike', 'PostController@registerLike')->name('registerLike');
+
+Route::get('/registerUnlike', 'PostController@registerUnlike')->name('registerUnlike');
+
+
+
+
+
+
+
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostLike;
 use FeedReader;
 use Auth;
 use Illuminate\Http\Request;
@@ -205,6 +206,120 @@ class PostController extends Controller
         //
 
         return 123;
+    }
+
+    
+
+
+
+
+    public function getLikes(Request $request)
+    {
+        # code...
+
+        try {
+            
+            $post_likes = PostLike::where('post_id', $request->post_id )->get()->count();
+
+            $user_liked = PostLike::where('user_id' $request->user_id)->first();
+
+            if($user_liked){
+
+                $liked_by_user = true;
+
+            }else{
+
+                $liked_by_user = false;
+
+            }
+
+            $results=[
+                'liked_by_user' => $liked_by_user,
+                'post_likes' => $post_likes
+            ];
+
+            return $results;
+
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
+    }
+
+    public function getUnikes()
+    {
+        # code...
+        try {
+            
+            $post_unlikes = PostUnlike::where('post_id', $request->post_id )->get()->count();
+
+            $user_unliked = PostUnlike::where('user_id' $request->user_id)->first();
+
+            if($user_unliked){
+
+                $unliked_by_user = true;
+
+            }else{
+
+                $unliked_by_user = false;
+
+            }
+
+            $results=[
+                'unliked_by_user' => $liked_by_user,
+                'post_unlikes' => $post_unlikes
+            ];
+
+            return $results;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
+
+    }
+
+    public function registerLike()
+    {
+        # code...
+
+        try {
+            
+            $post_liked = PostLike::create([
+                'user_id' =>$request->user_id,
+                'post_id' => $request->post_id
+            ]);
+    
+            return $post_liked;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+        }
+
+    }
+
+    public function registerUnlike()
+    {
+
+        # code...
+
+        try {
+            
+            $post_unliked = PostUnlike::create([
+                'user_id' =>$request->user_id,
+                'post_id' => $request->post_id
+            ]);
+    
+            return $post_unliked;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+        }
+
     }
 
     /**
