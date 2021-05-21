@@ -6,13 +6,13 @@
 <div class="mainpage">
     <div class="main_slider">
         <div class="slider" id="main-slider">
-            <div class="slide" style="background-image: url({{config('app.url')}}categories/{{$category->cover_image??'uncategorized.png'}}); background-size: cover;">
+            <div class="slide" style="background-image: url({{config('app.url')}}categories/{{$category->cover_image??'uncategorized.png'}}); background-size: cover; background-position: center center">
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="slide_left">
                             <div class="slide_content">
                                 <!-- <div class="category"><a href="blog-fullwidth.html">Fashion </a> | <a href="blog-fullwidth.html">Accessories</a></div> -->
-                                <h1 style="color: white;" class="title">
+                                <h1 style="color: white; font-size: 30pt;" class="title">
                                     {{$category_name}}
                                 </h1>
                                 <!-- <a href="post-page-fullwidth.html" class="link">
@@ -20,12 +20,7 @@
                                 </a> -->
                             </div>
                         </div>
-                        <div class="slide_right" data-slide="img/demo-bg.jpg">
-                            <div class="slide-img" style="background-image: url(img/demo-bg.jpg)"></div>
-                            <div class="read_more">
-                                <a href="post-page-fullwidth.html">Read more</a>
-                            </div>
-                        </div>
+     
                     </div>
                 </div>
             </div>
