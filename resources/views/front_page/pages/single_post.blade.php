@@ -25,9 +25,11 @@
                                         {{$post_data->post_title}}
                                     </h2>
 
-                                    <likeunlike-component user_id="{{Auth::user()->id??120010}}" post_id="{{$post_data->id}}"></likeunlike-component>
+                               @auth()
+                               <likeunlike-component user_id="{{Auth::user()->id??120010}}" post_id="{{$post_data->id}}"></likeunlike-component>
 
 
+                               @endauth
                                     <h4>{{$post_comments->count()}} Comments</h4>
 
                                     <div style="margin-top: 30px;" class="author">
