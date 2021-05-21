@@ -104,7 +104,24 @@ class FrontPageController extends Controller
 
         $featured_posts = FeaturedPost::with('posts.post_authors')->with('posts.post_categories')->latest()->get();
 
-        
+        //previous post
+
+        // $previous_post = Post::with('post_categories')
+        //     ->with('post_authors')
+        //     ->with('comments')
+        //     ->where('updated_at', $post_data->)
+        //     ->first();
+
+
+        // //next post
+
+        // $next_post = Post::with('post_categories')
+        // ->with('post_authors')
+        // ->with('comments')
+        // ->where('updated_at', $post_data->)
+        // ->first();
+
+
 
 
         $post_comments = Comment::where('post_id', $post_data->id)->latest()->get();

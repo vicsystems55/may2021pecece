@@ -25,7 +25,7 @@
                                         {{$post_data->post_title}}
                                     </h2>
 
-                                    <likeunlike-component user_id="{{Auth::user()->id}}" post_id="{{$post_data->id}}"></likeunlike-component>
+                                    <likeunlike-component user_id="{{Auth::user()->id??120010}}" post_id="{{$post_data->id}}"></likeunlike-component>
 
 
                                     <h4>{{$post_comments->count()}} Comments</h4>
@@ -52,6 +52,12 @@
                                 <div class="post-foot">
                                     <div class="tags">
                                         <div class="share-btn">Share</div>
+                                
+                                
+
+
+
+
                                         <a href="#">Life</a>
                                         <a href="#">Shopping</a>
                                         <a href="#">Products</a>
@@ -111,3 +117,19 @@
 
 
 @endsection
+
+<div class="modal share-block" id="share-block">
+    <div class="close"></div>
+    <div class="wrap">
+        <div class="wrap_float">
+            <div class="close mobile-close"></div>
+            <div class="links">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{config('app.url')}}single_post/{{$post_data->post_code}}" class="link facebook"></a>
+                <a href="#" class="link pinterest"></a>
+                <a href="#" class="link twitter"></a>
+                <a href="#" class="link linked"></a>
+                <a href="#" class="link email"></a>
+            </div>
+        </div>
+    </div>
+</div>

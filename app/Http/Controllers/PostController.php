@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\PostLike;
+use App\PostUnLike;
 use FeedReader;
 use Auth;
 use Illuminate\Http\Request;
@@ -221,7 +222,9 @@ class PostController extends Controller
             
             $post_likes = PostLike::where('post_id', $request->post_id )->get()->count();
 
-            $user_liked = PostLike::where('user_id' $request->user_id)->first();
+            $user_liked = PostLike::where('user_id', $request->user_id)->where('post_id', $request->post_id)->first();
+
+      
 
             if($user_liked){
 
@@ -245,16 +248,18 @@ class PostController extends Controller
             //throw $th;
             return $th;
         }
+
+        
     }
 
-    public function getUnikes()
+    public function getUnlikes(Request $request)
     {
         # code...
         try {
             
-            $post_unlikes = PostUnlike::where('post_id', $request->post_id )->get()->count();
+            $post_unlikes = PostUnLike::where('post_id', $request->post_id )->get()->count();
 
-            $user_unliked = PostUnlike::where('user_id' $request->user_id)->first();
+            $user_unliked = PostUnLike::where('user_id', $request->user_id)->where('post_id', $request->post_id)->first();
 
             if($user_unliked){
 
@@ -267,7 +272,7 @@ class PostController extends Controller
             }
 
             $results=[
-                'unliked_by_user' => $liked_by_user,
+                'unliked_by_user' => $unliked_by_user,
                 'post_unlikes' => $post_unlikes
             ];
 
@@ -279,16 +284,22 @@ class PostController extends Controller
 
     }
 
-    public function registerLike()
+    public function registerLike(Request $request)
     {
         # code...
 
+        
+
         try {
             
-            $post_liked = PostLike::create([
-                'user_id' =>$request->user_id,
+            $post_liked = PostLike::updateOrCreate([
+                'user_id' => $request->user_id
+            ],[
+                'user_id' => $request->user_id,
                 'post_id' => $request->post_id
             ]);
+
+           PostUnLike::where('post_id', $request->post_id)->where('user_id', $request->user_id)->delete();
     
             return $post_liked;
 
@@ -300,17 +311,25 @@ class PostController extends Controller
 
     }
 
-    public function registerUnlike()
+    public function registerUnlike(Request $request)
     {
 
         # code...
 
         try {
             
-            $post_unliked = PostUnlike::create([
+            $post_unliked = PostUnlike::updateOrCreate([
+                'user_id' => $request->user_id
+            ],[
                 'user_id' =>$request->user_id,
                 'post_id' => $request->post_id
             ]);
+
+            
+
+           PostLike::where('post_id', $request->post_id)->where('user_id', $request->user_id)->delete();
+
+
     
             return $post_unliked;
 

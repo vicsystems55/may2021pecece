@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "vue-my-toasts": "^2.0.1",
         "vue-toast-notification": "^0.6.1",
         "vue-toastify": "^1.8.0",
         "vue2-editor": "^2.10.2",

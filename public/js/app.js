@@ -2021,13 +2021,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       loader: "http://localhost/may2021pecece/public/" + 'loader.gif',
       content: '',
       total_likes: '',
-      total_unlikes: ''
+      total_unlikes: '',
+      liked_by_user: false,
+      unliked_by_user: false
     };
   },
   props: ['user_id', 'post_id'],
@@ -2035,43 +2057,47 @@ __webpack_require__.r(__webpack_exports__);
     getLikes: function getLikes() {
       var _this = this;
 
-      axios.get('/getLikes', {
+      axios.post('/getLikes', {
         user_id: this.user_id,
         post_id: this.post_id
       }).then(function (response) {
-        return console.log(response), _this.total_likes = response.post_likes;
+        return console.log(response), _this.total_likes = response.data.post_likes, _this.liked_by_user = response.data.liked_by_user;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    getUnikes: function getUnikes() {
+    getUnlikes: function getUnlikes() {
       var _this2 = this;
 
-      axios.get('/getUnikes', {
+      axios.post('/getUnlikes', {
         user_id: this.user_id,
         post_id: this.post_id
       }).then(function (response) {
-        return console.log(response), _this2.total_unlikes = response.post_unlikes;
+        return console.log(response), _this2.total_unlikes = response.data.post_unlikes, _this2.unliked_by_user = response.data.unliked_by_user;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     registerLike: function registerLike() {
-      axios.get('/registerLike', {
+      var _this3 = this;
+
+      axios.post('/registerLike', {
         user_id: this.user_id,
         post_id: this.post_id
       }).then(function (response) {
-        return console.log(response);
+        return console.log(response), _this3.getUnlikes(), _this3.getLikes();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     registerUnlike: function registerUnlike() {
-      axios.get('/registerUnlike', {
+      var _this4 = this;
+
+      axios.post('/registerUnlike', {
         user_id: this.user_id,
         post_id: this.post_id
       }).then(function (response) {
-        return console.log(response);
+        return console.log(response), _this4.getUnlikes(), _this4.getLikes();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2079,6 +2105,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getLikes();
+    this.getUnlikes();
   }
 });
 
@@ -37864,49 +37891,111 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("table", [
     _c("tr", [
-      _c("td", [
-        _c(
-          "span",
-          {
-            staticStyle: {
-              border: "1px solid white",
-              width: "120px",
-              color: "white",
-              "background-color": "rgb(63, 58, 58)",
-              padding: "10px"
-            }
-          },
-          [
-            _vm._v(
-              "\n            \n                " +
-                _vm._s(_vm.total_likes) +
-                " Like\n            \n            "
+      !_vm.liked_by_user
+        ? _c("td", [
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  border: "1px solid white",
+                  width: "120px",
+                  color: "white",
+                  "background-color": "rgb(63, 58, 58)",
+                  padding: "10px"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.registerLike()
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n            \n                " +
+                    _vm._s(_vm.total_likes) +
+                    " " +
+                    _vm._s(_vm.total_likes == 1 ? "Like" : "Unlikes") +
+                    "\n            \n            "
+                )
+              ]
             )
-          ]
-        )
-      ]),
+          ])
+        : _c("td", [
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  border: "1px solid white",
+                  width: "120px",
+                  color: "white",
+                  "background-color": "orange",
+                  padding: "10px"
+                }
+              },
+              [
+                _vm._v(
+                  "\n            \n                " +
+                    _vm._s(_vm.total_likes) +
+                    " " +
+                    _vm._s(_vm.total_likes == 1 ? "Like" : "Likes") +
+                    "\n            \n            "
+                )
+              ]
+            )
+          ]),
       _vm._v(" "),
-      _c("td", [
-        _c(
-          "span",
-          {
-            staticStyle: {
-              border: "1px solid white",
-              width: "120px",
-              color: "white",
-              "background-color": "rgb(63, 58, 58)",
-              padding: "10px"
-            }
-          },
-          [
-            _vm._v(
-              "\n            \n                " +
-                _vm._s(_vm.total_unlikes) +
-                " Unike\n            \n            "
+      !_vm.unliked_by_user
+        ? _c("td", [
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  border: "1px solid white",
+                  width: "120px",
+                  color: "white",
+                  "background-color": "rgb(63, 58, 58)",
+                  padding: "10px"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.registerUnlike()
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n            \n                " +
+                    _vm._s(_vm.total_unlikes) +
+                    " " +
+                    _vm._s(_vm.total_unlikes == 1 ? "Unlike" : "Unikes") +
+                    "\n            \n            "
+                )
+              ]
             )
-          ]
-        )
-      ])
+          ])
+        : _c("td", [
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  border: "1px solid white",
+                  width: "120px",
+                  color: "white",
+                  "background-color": "red",
+                  padding: "10px"
+                }
+              },
+              [
+                _vm._v(
+                  "\n            \n                " +
+                    _vm._s(_vm.total_unlikes) +
+                    " " +
+                    _vm._s(_vm.total_unlikes == 1 ? "Unlike" : "Unlikes") +
+                    "\n            \n            "
+                )
+              ]
+            )
+          ])
     ])
   ])
 }
@@ -50239,15 +50328,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/LikeunlikeComponent.vue ***!
   \*********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeunlikeComponent.vue?vue&type=template&id=8ce488ca& */ "./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca&");
 /* harmony import */ var _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LikeunlikeComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -50277,7 +50365,7 @@ component.options.__file = "resources/js/components/LikeunlikeComponent.vue"
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

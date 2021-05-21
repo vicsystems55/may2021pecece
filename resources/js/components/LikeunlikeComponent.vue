@@ -4,17 +4,37 @@
 
         <table>
             <tr>
-                <td>
-                    <span style="border: 1px solid white; width: 120px; color: white; background-color: rgb(63, 58, 58); padding: 10px;">
+
+            
+                <td v-if='!liked_by_user'>
+                    <span @click="registerLike()" style="border: 1px solid white; width: 120px; color: white; background-color: rgb(63, 58, 58); padding: 10px;">
                     
-                        {{total_likes}} Like
+                        {{total_likes}} {{total_likes==1?'Like':'Unlikes'}}
                     
                     </span>
                 </td>
-                <td>
-                    <span style="border: 1px solid white; width: 120px; color: white; background-color: rgb(63, 58, 58); padding: 10px;">
+
+                            
+                <td v-else>
+                    <span style="border: 1px solid white; width: 120px; color: white; background-color: orange; padding: 10px;">
                     
-                        {{total_unlikes}} Unike
+                        {{total_likes}} {{total_likes==1?'Like':'Likes'}}
+                    
+                    </span>
+                </td>
+
+                <td v-if='!unliked_by_user'>
+                    <span @click="registerUnlike()" style="border: 1px solid white; width: 120px; color: white; background-color: rgb(63, 58, 58); padding: 10px;">
+                    
+                        {{total_unlikes}} {{total_unlikes==1?'Unlike':'Unikes'}}
+                    
+                    </span>
+                </td>
+
+                <td v-else>
+                    <span style="border: 1px solid white; width: 120px; color: white; background-color: red; padding: 10px;">
+                    
+                        {{total_unlikes}} {{total_unlikes==1?'Unlike':'Unlikes'}}
                     
                     </span>
                 </td>
@@ -31,6 +51,9 @@
 <script>
 
 
+
+
+
     export default {
 
         data() {
@@ -39,6 +62,8 @@
                 content: '',
                 total_likes: '',
                 total_unlikes: '',
+                liked_by_user: false,
+                unliked_by_user: false,
 
                 
             }
@@ -49,9 +74,9 @@
 
             getLikes(){
 
-               
+           
 
-                 axios.get('/getLikes',{
+                 axios.post('/getLikes',{
                      user_id: this.user_id,
                      post_id: this.post_id
                  })
@@ -60,7 +85,8 @@
                    
                    console.log(response),
 
-                   this.total_likes = response.post_likes
+                   this.total_likes = response.data.post_likes,
+                   this.liked_by_user = response.data.liked_by_user
 
              
              ))
@@ -70,21 +96,19 @@
 
             },
 
-            getUnikes(){
+            getUnlikes(){
 
-                    axios.get('/getUnikes',{
+                    axios.post('/getUnlikes',{
                      user_id: this.user_id,
                      post_id: this.post_id
                  })
                .then((response)=>(
-                    
-                   
+                         
                    console.log(response),
 
-                   this.total_unlikes = response.post_unlikes
-
-
-             
+                   this.total_unlikes = response.data.post_unlikes,
+                   this.unliked_by_user = response.data.unliked_by_user
+            
              ))
                 .catch(function (error) {
                     console.log(error);
@@ -94,16 +118,21 @@
 
             registerLike(){
 
-                axios.get('/registerLike',{
+               
+
+                axios.post('/registerLike',{
                      user_id: this.user_id,
                      post_id: this.post_id
                  })
                .then((response)=>(
                     
                    
-                   console.log(response)
+                   console.log(response),
 
-             
+                    this.getUnlikes(),
+                    this.getLikes()
+
+         
              ))
                 .catch(function (error) {
                     console.log(error);
@@ -113,14 +142,16 @@
 
             registerUnlike(){
 
-                axios.get('/registerUnlike',{
+                axios.post('/registerUnlike',{
                      user_id: this.user_id,
                      post_id: this.post_id
                  })
                .then((response)=>(
                     
                    
-                   console.log(response)
+                   console.log(response),
+                   this.getUnlikes(),
+                    this.getLikes()
 
              
              ))
@@ -135,8 +166,11 @@
         mounted() {
              
            this.getLikes()
+
+           this.getUnlikes()
          
         },
     }
 
 </script>
+

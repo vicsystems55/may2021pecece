@@ -14,6 +14,6 @@ class PostUnLike extends Model
     {
         # code...
 
-        return $this->hasMany('App\PostUnLike', 'post_id', 'id')
+        return $this->hasMany('App\PostUnLike', 'post_id', 'id');
     }
 }

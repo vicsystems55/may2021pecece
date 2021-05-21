@@ -35,21 +35,7 @@
             <button class="submit submit-search"><span>SEARCH</span></button>
         </div>
         <div class="overlay" id="overlay"></div>
-        <div class="modal share-block" id="share-block">
-            <div class="close"></div>
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="close mobile-close"></div>
-                    <div class="links">
-                        <a href="#" class="link facebook"></a>
-                        <a href="#" class="link pinterest"></a>
-                        <a href="#" class="link twitter"></a>
-                        <a href="#" class="link linked"></a>
-                        <a href="#" class="link email"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="modal review-modal" id="write-review-block">
             <div class="close"></div>
             <div class="wrap">
