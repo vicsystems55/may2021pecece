@@ -37914,7 +37914,7 @@ var render = function() {
                   "\n            \n                " +
                     _vm._s(_vm.total_likes) +
                     " " +
-                    _vm._s(_vm.total_likes == 1 ? "Like" : "Unlikes") +
+                    _vm._s(_vm.total_likes == 1 ? "Like" : "Likes") +
                     "\n            \n            "
                 )
               ]

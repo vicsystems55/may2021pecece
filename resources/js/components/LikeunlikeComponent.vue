@@ -9,7 +9,7 @@
                 <td v-if='!liked_by_user'>
                     <span @click="registerLike()" style="border: 1px solid white; width: 120px; color: white; background-color: rgb(63, 58, 58); padding: 10px;">
                     
-                        {{total_likes}} {{total_likes==1?'Like':'Unlikes'}}
+                        {{total_likes}} {{total_likes==1?'Like':'Likes'}}
                     
                     </span>
                 </td>
