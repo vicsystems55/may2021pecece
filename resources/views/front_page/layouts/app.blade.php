@@ -7,6 +7,9 @@
     <title>Pecece</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{config('app.url')}}meduza/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/fontawesome.min.js" integrity="sha512-KCwrxBJebca0PPOaHELfqGtqkUlFUCuqCnmtydvBSTnJrBirJ55hRG5xcP4R9Rdx9Fz9IF3Yw6Rx40uhuAHR8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>
@@ -204,6 +207,7 @@
     <script src="{{config('app.url')}}meduza/js/jquery.arcticmodal.min.js"></script>
     <script src="{{config('app.url')}}meduza/js/slick.min.js"></script>
     <script src="{{config('app.url')}}meduza/js/scripts.js"></script>
+
 
     
 </body>

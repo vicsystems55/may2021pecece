@@ -7,7 +7,7 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="breadcrumbs">
-                        <a href="#">Home</a> - <a href="#" class="current">Post Page Right Sidebar</a>
+                        <a href="#">Blog</a> - <a href="#" class="current">{{$post_data->post_title}}</a>
                     </div>
                     <div class="page_content">
 
@@ -24,15 +24,26 @@
                                     <h2 class="title">
                                         {{$post_data->post_title}}
                                     </h2>
-                                    <div class="author">
+
+                                    <likeunlike-component></likeunlike-component>
+
+
+                                    <h4>{{$post_comments->count()}} Comments</h4>
+
+                                    <div style="margin-top: 30px;" class="author">
                                         <div class="img ie-img">
                                             <img src="{{config('app.url')}}avatars/{{$post_data->post_authors->avatar}}" alt="">
                                         </div>
                                         <div class="name">By {{$post_data->post_authors->name}} – {{$post_data->updated_at->format('M')}} {{$post_data->updated_at->format('d')}}, {{$post_data->updated_at->format('Y')}}</div>
                                     </div>
-                                    <div class="share-btn">Share</div>
-                                    <div class="comments-count">
-                                        {{$post_comments->count()}} Comments
+                                    <div style="background-color: transparent;" class="share-btn">
+                                        
+
+                                    
+                                    </div>
+                                 
+                                    <div style="margin-top: 30px;" class="comments-count">
+                                       
                                     </div>
                                 </div>
                                 <div class="post-body _content">
@@ -55,6 +66,7 @@
                                         <a href="#">Products</a>
 
                                     </div>
+                                    
                                         @include('front_page.inc.post_author')
                                     <div class="post-nav">
                                         <a class="post next">

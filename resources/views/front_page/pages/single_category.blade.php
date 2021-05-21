@@ -12,7 +12,7 @@
                         <div class="slide_left">
                             <div class="slide_content">
                                 <!-- <div class="category"><a href="blog-fullwidth.html">Fashion </a> | <a href="blog-fullwidth.html">Accessories</a></div> -->
-                                <h1 style="font-size: 70pt; color: white;" class="title">
+                                <h1 style="color: white;" class="title">
                                     {{$category_name}}
                                 </h1>
                                 <!-- <a href="post-page-fullwidth.html" class="link">

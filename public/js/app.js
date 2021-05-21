@@ -1970,12 +1970,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1985,6 +1979,46 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {}
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -37663,54 +37697,51 @@ var staticRenderFns = [
           _c("span", { staticClass: "count" }, [_vm._v("5")])
         ]),
         _vm._v(" "),
-        _c("div", [
-          _vm._v("=>\r\n\r\n                "),
-          _c("div", { staticClass: "comment-item" }, [
-            _c("div", { staticClass: "comment-item-top" }, [
-              _c("div", { staticClass: "author" }, [
-                _c("div", { staticClass: "userpic ie-img" }, [
-                  _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "date" }, [
-                  _vm._v("November 6, 2018 at 8:29 am")
-                ])
+        _c("div", { staticClass: "comment-item" }, [
+          _c("div", { staticClass: "comment-item-top" }, [
+            _c("div", { staticClass: "author" }, [
+              _c("div", { staticClass: "userpic ie-img" }, [
+                _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+              _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "date" }, [
+                _vm._v("November 6, 2018 at 8:29 am")
+              ])
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "comment-item-bottom" }, [
-              _vm._v(
-                "\r\n                    When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                "
-              )
-            ])
+            _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "comment-item replied" }, [
-            _c("div", { staticClass: "comment-item-top" }, [
-              _c("div", { staticClass: "author" }, [
-                _c("div", { staticClass: "userpic ie-img" }, [
-                  _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "date" }, [
-                  _vm._v("November 6, 2018 at 8:29 am")
-                ])
+          _c("p", { staticClass: "comment-item-bottom" }, [
+            _vm._v(
+              "\r\n                    When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "comment-item replied" }, [
+          _c("div", { staticClass: "comment-item-top" }, [
+            _c("div", { staticClass: "author" }, [
+              _c("div", { staticClass: "userpic ie-img" }, [
+                _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+              _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "date" }, [
+                _vm._v("November 6, 2018 at 8:29 am")
+              ])
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "comment-item-bottom" }, [
-              _vm._v(
-                "\r\n                            When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                        "
-              )
-            ])
+            _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "comment-item-bottom" }, [
+            _vm._v(
+              "\r\n                        When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                    "
+            )
           ])
         ])
       ]),
@@ -37743,6 +37774,79 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("button", { staticClass: "submit" }, [_vm._v("Post Comment")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", [
+      _c("tr", [
+        _c("td", [
+          _c(
+            "span",
+            {
+              staticStyle: {
+                border: "1px solid white",
+                width: "120px",
+                color: "white",
+                "background-color": "rgb(63, 58, 58)",
+                padding: "10px"
+              }
+            },
+            [
+              _vm._v(
+                "\n            \n                Like\n            \n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _c(
+            "span",
+            {
+              staticStyle: {
+                border: "1px solid white",
+                width: "120px",
+                color: "white",
+                "background-color": "rgb(63, 58, 58)",
+                padding: "10px"
+              }
+            },
+            [
+              _vm._v(
+                "\n            \n                Unike\n            \n            "
+              )
+            ]
+          )
         ])
       ])
     ])
@@ -49946,6 +50050,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('likeunlike-component', __webpack_require__(/*! ./components/LikeunlikeComponent.vue */ "./resources/js/components/LikeunlikeComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50066,6 +50171,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LikeunlikeComponent.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/LikeunlikeComponent.vue ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeunlikeComponent.vue?vue&type=template&id=8ce488ca& */ "./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca&");
+/* harmony import */ var _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LikeunlikeComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LikeunlikeComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LikeunlikeComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeunlikeComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LikeunlikeComponent.vue?vue&type=template&id=8ce488ca& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeunlikeComponent.vue?vue&type=template&id=8ce488ca&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
