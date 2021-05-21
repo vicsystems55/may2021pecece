@@ -34,6 +34,8 @@ Route::get('/auth', function () {
 
     Route::get('/single_post/{post_code}', 'FrontPageController@single_post')->name('single_post');
 
+    Route::get('/category/{category_name}', 'FrontPageController@category')->name('category');
+
 
 
 Route::group(['middleware' => ['auth', 'admin'],'prefix'=> 'admin'], function () {

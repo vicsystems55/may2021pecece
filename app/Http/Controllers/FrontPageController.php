@@ -35,6 +35,7 @@ use Auth;
 
 class FrontPageController extends Controller
 {
+    
     //
     public function index()
     {
@@ -118,6 +119,33 @@ class FrontPageController extends Controller
             'categories' => $categories,
             'popular_posts' => $popular_posts,
             'featured_posts' => $featured_posts
+        ]);
+    }
+
+    public function category($category_name)
+    {
+        $category = Category::where('name', $category_name)->first();
+
+        if (!$category) {
+            # code...
+            $category_name = 'Not Found';
+        }else{
+
+            $category_name = $category->name;
+        }
+
+      
+                # code...
+                $category_posts = Post::with('post_categories')->with('post_authors')->where('category_id', $category->id??3000)->where('status', 'live')->latest()->get();
+
+
+        
+        return view('front_page.pages.single_category',[
+            'category_posts' =>  $category_posts,
+            'category_name' => $category_name,
+            'category' => $category
+
+
         ]);
     }
 }

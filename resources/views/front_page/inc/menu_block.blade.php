@@ -16,7 +16,7 @@ $categories = \App\Category::with('posts')->latest()->get();
 
                             @forelse($categories as $category)
 
-                            <a href="shop-catalog-3-items.html" class="item">
+                            <a href="{{route('category', $category->name)}}" class="item">
                                     <div class="_image">
                                         <img src="{{config('app.url')}}categories/{{$category->cover_image}}" alt="">
                                     </div>

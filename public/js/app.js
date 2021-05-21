@@ -1918,6 +1918,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37598,7 +37656,96 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h4", [_vm._v("component")])])
+    return _c("div", [
+      _c("div", { staticClass: "comments" }, [
+        _c("h2", { staticClass: "title" }, [
+          _vm._v("Comments "),
+          _c("span", { staticClass: "count" }, [_vm._v("5")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _vm._v("=>\r\n\r\n                "),
+          _c("div", { staticClass: "comment-item" }, [
+            _c("div", { staticClass: "comment-item-top" }, [
+              _c("div", { staticClass: "author" }, [
+                _c("div", { staticClass: "userpic ie-img" }, [
+                  _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "date" }, [
+                  _vm._v("November 6, 2018 at 8:29 am")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "comment-item-bottom" }, [
+              _vm._v(
+                "\r\n                    When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "comment-item replied" }, [
+            _c("div", { staticClass: "comment-item-top" }, [
+              _c("div", { staticClass: "author" }, [
+                _c("div", { staticClass: "userpic ie-img" }, [
+                  _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "date" }, [
+                  _vm._v("November 6, 2018 at 8:29 am")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "comment-item-bottom" }, [
+              _vm._v(
+                "\r\n                            When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                        "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "write-comment" }, [
+        _c("h2", { staticClass: "title" }, [_vm._v("Leave a Reply")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "subtitle" }, [
+          _vm._v(
+            "\r\n                Your email address will not be published. Required fields are marked *\r\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("form", { staticClass: "form" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Message*" }
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c("input", {
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Name *" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input",
+              attrs: { type: "email", placeholder: "Email *" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "submit" }, [_vm._v("Post Comment")])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
