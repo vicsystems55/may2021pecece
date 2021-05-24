@@ -85,67 +85,19 @@
                                     <div class="text-center">
                                         <div class="row">
                                             <div class="col">
-                                                <h3 class="m-b-0">150</h3><span>Follower</span>
+                                                <h3 class="m-b-0">150</h3><span>Followers</span>
                                             </div>
                                             <div class="col">
-                                                <h3 class="m-b-0">140</h3><span>Place Stay</span>
+                                                <h3 class="m-b-0">140</h3><span>Posts</span>
                                             </div>
-                                            <div class="col">
-                                                <h3 class="m-b-0">45</h3><span>Reviews</span>
-                                            </div>
+                              
                                         </div>
-                                        <div class="mt-4">
-											<a href="javascript:void()" class="btn btn-primary mb-1 mr-1">Follow</a> 
-											<a href="javascript:void()" class="btn btn-primary mb-1" data-toggle="modal" data-target="#sendMessageModal">Send Message</a>
-                                        </div>
+                                   
                                     </div>
 									<!-- Modal -->
-									<div class="modal fade" id="sendMessageModal">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title">Send Message</h5>
-													<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-												</div>
-												<div class="modal-body">
-													<form class="comment-form">
-														<div class="row"> 
-															<div class="col-lg-6">
-																<div class="form-group">
-																	<label class="text-black font-w600">Name <span class="required">*</span></label>
-																	<input type="text" class="form-control" value="Author" name="Author" placeholder="Author">
-																</div>
-															</div>
-															<div class="col-lg-6">
-																<div class="form-group">
-																	<label class="text-black font-w600">Email <span class="required">*</span></label>
-																	<input type="text" class="form-control" value="Email" placeholder="Email" name="Email">
-																</div>
-															</div>
-															<div class="col-lg-12">
-																<div class="form-group">
-																	<label class="text-black font-w600">Comment</label>
-																	<textarea rows="8" class="form-control" name="comment" placeholder="Comment"></textarea>
-																</div>
-															</div>
-															<div class="col-lg-12">
-																<div class="form-group mb-0">
-																	<input type="submit" value="Post Comment" class="submit btn btn-primary" name="submit">
-																</div>
-															</div>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
+								
                                 </div>
-                                <div class="profile-blog mb-5">
-                                    <h5 class="text-primary d-inline">Today Highlights</h5><a href="javascript:void()" class="pull-right f-s-16">More</a>
-                                    <img src="{{config('app.url')}}acara/images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
-                                    <h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
-                                    <p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                </div>
+                          
                                 <div class="profile-interest mb-5">
                                     <h5 class="text-primary d-inline">Interest</h5>
                                     <div class="row mt-4 sp4" id="lightgallery">
@@ -202,115 +154,15 @@
                                 <div class="profile-tab">
                                     <div class="custom-tab-1">
                                         <ul class="nav nav-tabs">
-                                            <li class="nav-item"><a href="#my-posts" data-toggle="tab" class="nav-link active show">Posts</a>
-                                            </li>
+                                           
                                             <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link">About Me</a>
                                             </li>
                                             <li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content">
-                                            <div id="my-posts" class="tab-pane fade active show">
-                                                <div class="my-post-content pt-3">
-                                                    <div class="post-input">
-                                                        <textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea> 
-														<a href="javascript:void()" class="btn btn-primary light px-3" data-toggle="modal" data-target="#linkModal"><i class="fa fa-link"></i> </a>
-														<!-- Modal -->
-														<div class="modal fade" id="linkModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Social Links</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<a class="btn-social facebook" href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-																		<a class="btn-social google-plus" href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-																		<a class="btn-social linkedin" href="javascript:void(0)" ><i class="fa fa-linkedin"></i></a>
-																		<a class="btn-social instagram" href="javascript:void(0)"><i class="fa fa-instagram"></i></a>
-																		<a class="btn-social twitter" href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-																		<a class="btn-social youtube" href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-																		<a class="btn-social whatsapp" href="javascript:void(0)"><i class="fa fa-whatsapp"></i></a>
-																	</div>
-																</div>
-															</div>
-														</div>
-                                                        <a href="javascript:void()" class="btn btn-primary light mr-1 px-3" data-toggle="modal" data-target="#cameraModal"><i class="fa fa-camera"></i> </a>
-														<!-- Modal -->
-														<div class="modal fade" id="cameraModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Upload images</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<div class="input-group mb-3">
-																			<div class="input-group-prepend">
-																				<span class="input-group-text">Upload</span>
-																			</div>
-																			<div class="custom-file">
-																				<input type="file" class="custom-file-input">
-																				<label class="custom-file-label">Choose file</label>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<a href="javascript:void()" class="btn btn-primary" data-toggle="modal" data-target="#postModal">Post</a>
-														<!-- Modal -->
-														<div class="modal fade" id="postModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Post</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		 <textarea name="textarea" id="textarea2" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea>
-																		 <a class="btn btn-primary btn-rounded" href="javascript:void(0)">Post</a>																		 
-																	</div>
-																</div>
-															</div>
-														</div>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post border-bottom-1 pb-5">
-                                                        <img src="{{config('app.url')}}acara/images/profile/8.jpg" alt="" class="img-fluid">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i
-                                                                    class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i
-                                                                    class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post border-bottom-1 pb-5">
-                                                        <img src="{{config('app.url')}}acara/images/profile/9.jpg" alt="" class="img-fluid">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i
-                                                                    class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i
-                                                                    class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post pb-3">
-                                                        <img src="{{config('app.url')}}acara/images/profile/8.jpg" alt="" class="img-fluid">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i
-                                                                    class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i
-                                                                    class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="about-me" class="tab-pane fade">
+                                          
+                                            <div id="about-me" class="tab-pane fade active show">
                                                 <div class="profile-about-me">
                                                     <div class="pt-4 border-bottom-1 pb-3">
                                                         <h4 class="text-primary">About Me</h4>
