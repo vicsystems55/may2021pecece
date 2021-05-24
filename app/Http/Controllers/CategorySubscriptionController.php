@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CategorySubscription;
+use App\Category;
+use App\Notification;
 use Illuminate\Http\Request;
 
 class CategorySubscriptionController extends Controller
@@ -12,74 +14,111 @@ class CategorySubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getSubscriptionStatus(Request $request)
     {
         //
+
+        try {
+            //code...
+            $subscription = CategorySubscription::where('user_id', $request->user_id)->where('category_id', $request->category_id)->first();
+
+            if ($subscription == null) {
+                # code...
+                $subscription_status = false;
+
+            }else{
+                $subscription_status = true;
+
+            }
+    
+            return $subscription_status;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function subscribeCategory(Request $request)
     {
         //
+        try {
+
+            $category_data = Category::where('id', $request->category_id)->first();
+            
+            $subscribe = CategorySubscription::updateOrCreate([
+                'user_id' => $request->user_id,
+                'category_id' => $request->category_id
+            ],[
+                'user_id' => $request->user_id,
+                'category_id' => $request->category_id
+            ]);
+    
+            if ($subscribe) {
+                # code...
+                $subscribed = true;
+
+                $notifier = Notification::create([
+                    'user_id' => $request->user_id,
+                    'color_code' => '#FF9909',
+                    'title' => 'Category Subscription',
+                    'message' => 'You just subscribed to '.$category_data->name,
+                    ]);
+    
+            }else{
+    
+                $subscribed = false;
+    
+            }
+    
+            return $subscribed;
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function unsubscribeCategory(Request $request)
     {
         //
+        try {
+            
+            $subscription = CategorySubscription::where('user_id', $request->user_id)->where('category_id', $request->category_id)->delete();
+            
+            $category_data = Category::where('id', $request->category_id)->first();
+
+            if ($subscription) {
+                # code...
+                $unsubscribed = true;
+
+                $notifier = Notification::create([
+                    'user_id' => $request->user_id,
+                    'color_code' => '#FF9909',
+                    'title' => 'Category Subscription Cancelled',
+                    'message' => 'You just unsubscribed from '.$category_data->name,
+                    ]);
+    
+            }else{
+    
+                $unsubscribed = false;
+    
+            }
+    
+            return $unsubscribed;
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CategorySubscription  $categorySubscription
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CategorySubscription $categorySubscription)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CategorySubscription  $categorySubscription
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CategorySubscription $categorySubscription)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CategorySubscription  $categorySubscription
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CategorySubscription $categorySubscription)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CategorySubscription  $categorySubscription
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CategorySubscription $categorySubscription)
-    {
-        //
-    }
 }

@@ -28,6 +28,8 @@ Route::get('/auth', function () {
 
     Route::get('/about', 'FrontPageController@about')->name('about');
 
+    Route::get('/public_profile', 'FrontPageController@public_profile')->name('public_profile');
+
     Route::get('/contact', 'FrontPageController@contact')->name('contact');
 
     Route::get('/search_results', 'FrontPageController@search_results')->name('search_results');
@@ -115,11 +117,11 @@ Route::post('/registerUnlike', 'PostController@registerUnlike')->name('registerU
 
 
 
+Route::post('/getSubscriptionStatus', 'CategorySubscriptionController@getSubscriptionStatus');
 
+Route::post('/subscribeCategory', 'CategorySubscriptionController@subscribeCategory');
 
-
-
-
+Route::post('/unsubscribeCategory', 'CategorySubscriptionController@unsubscribeCategory');
 
 
 

@@ -58,21 +58,6 @@
                                 
 
 
-
-
-                                        <a href="#">Life</a>
-                                        <a href="#">Shopping</a>
-                                        <a href="#">Products</a>
-                                        <a href="#">Life</a>
-                                        <a href="#">Shopping</a>
-                                        <a href="#">Products</a>
-                                        <a href="#">Life</a>
-                                        <a href="#">Shopping</a>
-                                        <a href="#">Products</a>
-                                        <a href="#">Life</a>
-                                        <a href="#">Shopping</a>
-                                        <a href="#">Products</a>
-
                                     </div>
                                     
                                         @include('front_page.inc.post_author')

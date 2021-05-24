@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\PostLike;
 use App\PostUnLike;
+use App\Notification;
+use App\User;
 use FeedReader;
 use Auth;
 use Illuminate\Http\Request;
@@ -80,6 +82,13 @@ class PostController extends Controller
             'status' => $request->status,
         ]);
 
+        $notify_author = Notification::create([
+            'user_id' => $user_id,
+            'color_code' => '#FF9909',
+            'title' => 'New Post Created',
+            'message' => 'You just create a new post with title: ' .$request->post_title,
+        ]);
+
 
         return $post;
 
@@ -101,6 +110,10 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'status' => $request->status,
         ]);
+
+        
+
+        
 
 
         return $post;
@@ -142,6 +155,20 @@ class PostController extends Controller
         $post = Post::where('post_code', $request->post_code)->update([
 
             'status' => 'trash',
+        ]);
+
+        $notify_author = Notification::create([
+            'user_id' => $user_id,
+            'color_code' => '#FF9909',
+            'title' => 'Post Edited',
+            'message' => 'You just edited a with title: ' .$request->post_title,
+        ]);
+
+        $notify_author = Notification::create([
+            'user_id' => $user_id,
+            'color_code' => '#FF9909',
+            'title' => 'New Post Created',
+            'message' => 'You just trashed a  post with title: ' .$request->post_title,
         ]);
 
 
@@ -219,6 +246,9 @@ class PostController extends Controller
         # code...
 
         try {
+
+
+
             
             $post_likes = PostLike::where('post_id', $request->post_id )->get()->count();
 
@@ -235,6 +265,10 @@ class PostController extends Controller
                 $liked_by_user = false;
 
             }
+
+
+
+
 
             $results=[
                 'liked_by_user' => $liked_by_user,
@@ -256,6 +290,8 @@ class PostController extends Controller
     {
         # code...
         try {
+
+            
             
             $post_unlikes = PostUnLike::where('post_id', $request->post_id )->get()->count();
 
@@ -270,6 +306,7 @@ class PostController extends Controller
                 $unliked_by_user = false;
 
             }
+
 
             $results=[
                 'unliked_by_user' => $unliked_by_user,
@@ -291,6 +328,12 @@ class PostController extends Controller
         
 
         try {
+
+            $post_data = Post::where('id', $request->post_id)->first();
+
+            $authors_id = $post_data->user_id;
+
+            $user_data = User::where('id', $request->user_id)->first();
             
             $post_liked = PostLike::updateOrCreate([
                 'user_id' => $request->user_id
@@ -300,6 +343,20 @@ class PostController extends Controller
             ]);
 
            PostUnLike::where('post_id', $request->post_id)->where('user_id', $request->user_id)->delete();
+
+           $notify_viewer = Notification::create([
+            'user_id' => $request->user_id,
+            'color_code' => '#FF9909',
+            'title' => 'Post Liked',
+            'message' => 'You just liked : ' .$post_data->post_title,
+        ]);
+
+        $notify_author = Notification::create([
+            'user_id' => $authors_id,
+            'color_code' => '#FF9909',
+            'title' => 'Post Liked',
+            'message' => 'Your post :' .$post_data->post_title  .' just got liked by ' .$user_data->username,
+        ]);
     
             return $post_liked;
 
@@ -317,6 +374,13 @@ class PostController extends Controller
         # code...
 
         try {
+
+            
+            $post_data = Post::where('id', $request->post_id)->first();
+
+            $authors_id = $post_data->user_id;
+
+            $user_data = User::where('id', $request->user_id)->first();
             
             $post_unliked = PostUnlike::updateOrCreate([
                 'user_id' => $request->user_id
@@ -329,6 +393,20 @@ class PostController extends Controller
 
            PostLike::where('post_id', $request->post_id)->where('user_id', $request->user_id)->delete();
 
+
+           $notify_viewer = Notification::create([
+            'user_id' => $request->user_id,
+            'color_code' => '#FF9909',
+            'title' => 'Post Uniked',
+            'message' => 'You just unliked : ' .$post_data->post_title,
+            ]);
+
+            $notify_author = Notification::create([
+                'user_id' => $authors_id,
+                'color_code' => '#FF9909',
+                'title' => 'Post Uniked',
+                'message' => 'Your post :' .$post_data->post_title  .' just got unliked by ' .$user_data->username,
+            ]);
 
     
             return $post_unliked;

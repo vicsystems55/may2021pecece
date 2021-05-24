@@ -167,7 +167,13 @@ class AuthorDashboardController extends Controller
     {
         # code...
 
-        return view('dashboard.author.my_interest');
+        $categories = Category::with('posts')->latest()->get();
+
+        // dd($categories);
+
+        return view('dashboard.author.my_interest',[
+            'categories' => $categories
+        ]);
     }
 
     public function saved_posts() 
@@ -181,7 +187,11 @@ class AuthorDashboardController extends Controller
     {
         # code...
 
-        return view('dashboard.author.notifications');
+        $notifications = Notification::where('user_id', Auth::user()->id)->latest()->paginate(10);
+
+        return view('dashboard.author.notifications',[
+            'notifications' => $notifications
+        ]);
     }
 
     public function my_profile() 

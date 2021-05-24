@@ -5,7 +5,7 @@
 <div class="content-body">
     <div class="container-fluid">
 
-        <div class="col-xl-6 col-xxl-6 col-lg-6">
+        <div class="col-xl-10 col-xxl-10 col-lg-10">
             <div class="card">
                 <div class="card-header  border-0 pb-0">
                     <h4 class="card-title">Notifications</h4>
@@ -13,126 +13,35 @@
                 <div class="card-body"> 
                     <div id="DZ_W_Todo1" class="widget-media dz-scroll height370">
                         <ul class="timeline">
+
+                            @forelse ($notifications as $notification)
                             <li>
                                 <div class="timeline-panel">
                                     <div class="media mr-2">
                                         <img alt="image" width="50" src="{{config('app.url')}}acara/images/avatar/1.jpg">
                                     </div>
                                     <div class="media-body">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        <h5 class="mb-1">{{$notification->title}}</h5>
+                                        <p>
+                                            {{$notification->message}}
+                                        </p>
+                                        <small class="d-block">{{$notification->created_at->diffForHumans()}}</small>
                                     </div>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                            mark as read                                        
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
+                               
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="timeline-panel">
-                                    <div class="media mr-2 media-info">
-                                        KG
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-1">Resport created successfully</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-info light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-panel">
-                                    <div class="media mr-2 media-success">
-                                        <i class="fa fa-home"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-1">Reminder : Treatment Time!</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                <li>
-                                <div class="timeline-panel">
-                                    <div class="media mr-2">
-                                        <img alt="image" width="50" src="{{config('app.url')}}acara/images/avatar/1.jpg">
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-1">Dr sultads Send you Photo</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-panel">
-                                    <div class="media mr-2 media-danger">
-                                        KG
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-1">Resport created successfully</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-danger light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-panel">
-                                    <div class="media mr-2 media-primary">
-                                        <i class="fa fa-home"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-1">Reminder : Treatment Time!</h5>
-                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
-                                            <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            @empty
+
+                            <h4 class="mt-3 text-center">No notifications yet...</h4>
+                                
+                            @endforelse
+
+                 
                         </ul>
                     </div>
                 </div>

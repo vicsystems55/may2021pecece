@@ -102,7 +102,9 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-								Author Dashboard
+								Author's Dashboard
+
+                                <a class="btn btn-sm btn-primary" href="/">Back to Blog Page</a>
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -121,78 +123,36 @@
 									</svg>
 									<div class="pulse-css"></div>
                                 </a>
+                                <?php
+                                    $notifications = \App\Notification::where('user_id', Auth::user()->id)->where('status', 'unread')->latest()->get()->take(5);
+                                ?>
                                 <div class="dropdown-menu rounded dropdown-menu-right">
                                     <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3 height380">
 										<ul class="timeline">
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2">
-														<img alt="image" width="50" src="images/avatar/1.jpg">
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Dr sultads Send you Photo</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-info">
-														KG
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Resport created successfully</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-success">
-														<i class="fa fa-home"></i>
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Reminder : Treatment Time!</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											 <li>
+                                            @forelse($notifications as $notification)
+
+                                            <li>
 												<div class="timeline-panel">
 													<div class="media mr-2">
 														<img alt="image" width="50" src="{{config('app.url')}}acara/images/avatar/1.jpg">
 													</div>
 													<div class="media-body">
-														<h6 class="mb-1">Dr sultads Send you Photo</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
+														<h6 class="mb-1">{{$notification->title}}</h6>
+														<small class="d-block">{{$notification->updated_at->diffForHumans()}}</small>
 													</div>
 												</div>
 											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-danger">
-														KG
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Resport created successfully</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-primary">
-														<i class="fa fa-home"></i>
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Reminder : Treatment Time!</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
+
+                                            @empty
+
+                                            <h6 class="text-center mt-3">No notifications yet...</h6>
+
+                                            @endforelse
+
+					
 										</ul>
 									</div>
-                                    <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>
+                                    <a class="all-notification" href="{{route('author.notifications')}}">See all notifications <i class="ti-arrow-right"></i></a>
                                 </div>
                             </li>
 						
