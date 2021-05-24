@@ -27,6 +27,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('subscribe-component', require('./components/SubscribeComponent.vue').default);
 
+Vue.component('follow-component', require('./components/FollowComponent.vue').default);
+
 Vue.component('likeunlike-component', require('./components/LikeunlikeComponent.vue').default);
 
 /**

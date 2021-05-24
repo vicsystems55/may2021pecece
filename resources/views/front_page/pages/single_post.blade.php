@@ -33,10 +33,13 @@
                                     <h4>{{$post_comments->count()}} Comments</h4>
 
                                     <div style="margin-top: 30px;" class="author">
+                                    <a target="_blank" href="{{route('public_profile',$post_data->post_authors->id )}}">
                                         <div class="img ie-img">
                                             <img src="{{config('app.url')}}avatars/{{$post_data->post_authors->avatar}}" alt="">
                                         </div>
                                         <div class="name">By {{$post_data->post_authors->name}} – {{$post_data->updated_at->format('M')}} {{$post_data->updated_at->format('d')}}, {{$post_data->updated_at->format('Y')}}</div>
+                                    
+                                    </a>
                                     </div>
                                     <div style="background-color: transparent;" class="share-btn">
                                         

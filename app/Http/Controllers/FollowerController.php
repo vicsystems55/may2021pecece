@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Follower;
+use App\Notification;
+
 use Illuminate\Http\Request;
 
 class FollowerController extends Controller
@@ -12,74 +14,68 @@ class FollowerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getFollowers(Request $request)
     {
+
+        
         //
+        try {
+            
+            $followers = Follower::where('author_id', $request->author_id)->get()->count();
+
+            $is_followed = Follower::where('author_id', $request->author_id)->where('follower_id', $request->follower_id)->first();
+    
+            if ($is_followed) {
+                # code...
+                $follower_status = true;
+    
+            }else{
+    
+                $follower_status = false;
+    
+            }
+    
+            $data = [
+                'followers' => $followers,
+                'follower_status' => $follower_status
+            ];
+    
+    
+            return $data;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function followAuthor(Request $request)
     {
         //
+        try {
+            
+            
+        $follow = Follower::updateOrCreate([
+            'follower_id' => $request->follower_id,
+            'author_id' => $request->author_id
+        ],[
+            'follower_id' => $request->follower_id,
+            'author_id' => $request->author_id
+        ]);
+
+        return $follow;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function unfollowAuthor(Request $request)
     {
         //
+        $unfollow = Follower::where('follower_id', $request->follower_id)->where('author_id', $request->author_id)->delete();
+
+        return $unfollow;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Follower  $follower
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Follower $follower)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Follower  $follower
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Follower $follower)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Follower  $follower
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Follower $follower)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Follower  $follower
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Follower $follower)
-    {
-        //
-    }
 }

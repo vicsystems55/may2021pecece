@@ -69,6 +69,29 @@ class FrontPageController extends Controller
         return view('front_page.pages.about');
     }
 
+    public function public_profile($id)
+    {
+        $authors_data = User::where('id', $id)->first();
+
+        $posts_by_author = Post::with('post_categories')->with('post_authors')->with('comments')->where('status', 'live')->where('user_id', $id)->latest()->paginate();
+
+
+        $popular_posts = Post::with('post_categories')->with('post_authors')->with('comments')->where('views', '>', '12')->get();
+
+        $featured_posts = FeaturedPost::with('posts.post_authors')->with('posts.post_categories')->latest()->get();
+
+        $categories = Category::with('posts')->latest()->get();
+
+        return view('front_page.pages.public_profile',[
+            'popular_posts' => $popular_posts,
+            'featured_posts' => $featured_posts,
+            'categories' => $categories,
+            'authors_data' => $authors_data,
+            'posts_by_author' => $posts_by_author
+
+        ]);
+    }
+
     public function contact()
     {
         

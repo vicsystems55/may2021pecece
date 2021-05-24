@@ -194,6 +194,8 @@ class AuthorDashboardController extends Controller
         ]);
     }
 
+    
+
     public function my_profile() 
     {
         # code...
