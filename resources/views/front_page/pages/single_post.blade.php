@@ -90,7 +90,7 @@
                                     <example-component></example-component>
 
 
-                                    <!-- @include('front_page.inc.comment_section') -->
+                                   
 
 
                                   @include('front_page.inc.related_post')

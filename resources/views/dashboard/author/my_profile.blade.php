@@ -170,15 +170,7 @@
                                                         <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
                                                     </div>
                                                 </div>
-                                                <div class="profile-skills mb-5">
-                                                    <h4 class="text-primary mb-2">Skills</h4>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Admin</a>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Dashboard</a>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Photoshop</a>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Bootstrap</a>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Responsive</a>
-                                                    <a href="javascript:void()" class="btn btn-primary light btn-xs mb-1">Crypto</a>
-                                                </div>
+                                       
                                                 <div class="profile-lang  mb-5">
                                                     <h4 class="text-primary mb-2">Language</h4>
 													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> 

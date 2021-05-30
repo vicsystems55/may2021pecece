@@ -4707,7 +4707,7 @@ body.locked {
     height: 37px;
   }
   .top_panel .top_left .logo {
-    width: 150px;
+    min-width: 45px;
     padding: 0;
     height: 36px;
     line-height: 36px;
@@ -4966,7 +4966,7 @@ body.locked {
     left: 48px;
   }
   .top_panel .top_left .logo {
-    width: 120px;
+    width: 12px;
   }
   .top_panel .top_right .cart {
     right: 46px;

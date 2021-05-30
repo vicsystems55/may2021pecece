@@ -59,11 +59,11 @@
 						</a>
 					</li>
 
-                    <li><a href="{{route('author.settings')}}" class="ai-icon" aria-expanded="false">
+                    {{-- <li><a href="{{route('author.settings')}}" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-settings-2"></i>
 							<span class="nav-text">Settings</span>
 						</a>
-					</li>
+					</li> --}}
 
      
                 </ul>

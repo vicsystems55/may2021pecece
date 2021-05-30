@@ -1,10 +1,11 @@
+
 <div class="top_panel">
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="mobile-btn" id="mobile-btn"></div>
                     <div class="top_left">
-                        <a href="/" class="logo">
-                            <img src="img/logo.svg" alt="">
+                        <a  href="/" class="logo">
+                            <img src="{{config('app.url')}}logo.png" alt="">
                         </a>
                         <div class="menu" id="menu">
                            <div class="close"></div>
