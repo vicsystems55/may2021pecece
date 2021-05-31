@@ -87,7 +87,7 @@
                                         </a>
                                     </div>
 
-                                    <example-component></example-component>
+                                    <example-component post_id="{{$post_data->id}}"></example-component>
 
 
                                    

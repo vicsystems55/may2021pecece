@@ -12,10 +12,31 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAllComments(Request $request)
     {
         //
+
+        $allComments = Comment::where('post_id', $request->post_id)->where('parent_id', 0)->latest()->get();
+
+        return $allComments;
     }
+
+    public function getSecondGenComments(Request $request)
+    {
+        //
+
+        try {
+            
+            $comments = Comment::where('parent_id', $request->comment_id)->latest()->get();
+
+            return $comments;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.

@@ -1983,41 +1983,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       loader: "http://localhost/may2021pecece/public/" + 'loader.gif',
-      content: ''
+      content: '',
+      firstgen_comments: '',
+      secondgen_comments: ''
     };
   },
+  props: ['post_id'],
   methods: {
     view_more: function view_more() {
       this.$modal.show('view_more');
     },
-    comment: function comment() {
-      this.$modal.show('comment');
+    commenti: function commenti() {
+      this.$modal.show('commenti');
+    },
+    getAllComments: function getAllComments() {
+      var _this = this;
+
+      alert(this.post_id);
+      axios.post('/getAllComments', {
+        post_id: this.post_id
+      }).then(function (response) {
+        return console.log(response), _this.firstgen_comments = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    secondGenComments: function secondGenComments(comment_id) {
+      axios.post('/getAllComments', {
+        post_id: this.post_id
+      }).then(function (response) {
+        return console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.getAllComments();
+  }
 });
 
 /***/ }),
@@ -2230,6 +2239,87 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getLikes();
     this.getUnlikes();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      loader: "http://localhost/may2021pecece/public/" + 'loader.gif',
+      content: '',
+      secondgen_comments: ''
+    };
+  },
+  props: ['commentid'],
+  methods: {
+    view_morez: function view_morez() {
+      this.$modal.show('view_more');
+    },
+    commentz: function commentz() {
+      this.$modal.show('comment');
+    },
+    getSecondGenComments: function getSecondGenComments() {
+      var _this = this;
+
+      alert(this.commentid);
+      axios.post('/getSecondGenComments', {
+        comment_id: this.commentid
+      }).then(function (response) {
+        return console.log(response), _this.secondgen_comments = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getSecondGenComments();
   }
 });
 
@@ -37991,98 +38081,64 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "comments" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticStyle: { "border-left": "1px solid grey", padding: "5px" } },
-          [
-            _c("div", { staticClass: "comment-item" }, [
-              _c("div", { staticClass: "comment-item-top" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "reply",
-                    on: {
-                      click: function($event) {
-                        return _vm.comment()
-                      }
-                    }
-                  },
-                  [_vm._v("Reply")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "comment-item-bottom" }, [
-                _vm._v(
-                  "\r\n                            When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
+      _c(
+        "div",
+        { staticClass: "comments" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.firstgen_comments, function(comment) {
+            return _c(
               "div",
               {
-                staticClass: "comment-item replied",
-                staticStyle: { "border-left": "1px solid grey", padding: "5px" }
+                key: comment.id,
+                staticStyle: {
+                  "border-left": "1px solid grey",
+                  "border-bottom": "1px solid grey",
+                  padding: "5px",
+                  "margin-bottom": "20px"
+                }
               },
               [
-                _c("div", { staticClass: "comment-item-top" }, [
-                  _vm._m(2),
+                _c("div", { staticClass: "comment-item" }, [
+                  _c("div", { staticClass: "comment-item-top" }, [
+                    _vm._m(1, true),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "reply",
+                        on: {
+                          click: function($event) {
+                            return _vm.commenti()
+                          }
+                        }
+                      },
+                      [_vm._v("Reply")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "reply",
-                      on: {
-                        click: function($event) {
-                          return _vm.comment()
-                        }
-                      }
-                    },
-                    [_vm._v("Reply")]
-                  )
+                  _c("p", { staticClass: "comment-item-bottom" }, [
+                    _vm._v(
+                      "\r\n                        " +
+                        _vm._s(comment.comment) +
+                        "\r\n                        "
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "comment-item-bottom" }, [
-                  _vm._v(
-                    "\r\n                            When designers create products, they tell stories to users. Designers have a lot of tools to make a story more interesting. Motion design is one of the most powerful tools designers have. The true power of motion can be seen in mobile experiences. A mobile app without motion is just a sequence of independent screens. But when designers introduce motion, something magical happens – a design comes alive – an app becomes an interactive story that can engage users.\r\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "comment" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "reply",
-                      on: {
-                        click: function($event) {
-                          return _vm.view_more()
-                        }
-                      }
-                    },
-                    [_vm._v("View More")]
-                  )
-                ])
-              ]
+                _c("secondgen-comment", { attrs: { commentid: "1" } })
+              ],
+              1
             )
-          ]
-        )
-      ]),
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _c(
         "modal",
-        {
-          attrs: {
-            name: "comment",
-            height: 1000,
-            scrollable: true,
-            adaptive: true
-          }
-        },
+        { attrs: { name: "commenti", height: 1000, adaptive: true } },
         [
           _c(
             "div",
@@ -38111,18 +38167,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "modal",
-        {
-          attrs: {
-            name: "view_more",
-            height: 1000,
-            scrollable: true,
-            adaptive: true
-          }
-        },
+        { attrs: { name: "view_more", height: 1000, adaptive: true } },
         [
           _c(
             "div",
-            { staticClass: "write-comment", staticStyle: { padding: "10px" } },
+            {
+              staticClass: "write-comment",
+              staticStyle: { padding: "1px", "z-index": "5" }
+            },
             [_c("h5", [_vm._v("Comments")])]
           )
         ]
@@ -38139,22 +38191,6 @@ var staticRenderFns = [
     return _c("h2", { staticClass: "title" }, [
       _vm._v("Comments "),
       _c("span", { staticClass: "count" }, [_vm._v("5")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "author" }, [
-      _c("div", { staticClass: "userpic ie-img" }, [
-        _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "date" }, [
-        _vm._v("November 6, 2018 at 8:29 am")
-      ])
     ])
   },
   function() {
@@ -38376,6 +38412,89 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.secondgen_comments, function(comment) {
+      return _c(
+        "div",
+        {
+          key: comment.id,
+          staticClass: "comment-item replied",
+          staticStyle: { "border-left": "1px solid grey", padding: "5px" }
+        },
+        [
+          _c("div", [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("p", { staticClass: "comment-item-bottom" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(comment.comment) +
+                  "\n        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.view_morez()
+                }
+              }
+            },
+            [_vm._v("\n                view more\n            ")]
+          )
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "comment-item-top" }, [
+      _c("div", { staticClass: "author" }, [
+        _c("div", { staticClass: "userpic ie-img" }, [
+          _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "date" }, [
+          _vm._v("November 6, 2018 at 8:29 am")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "reply" }, [_vm._v("Reply")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50625,6 +50744,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('secondgen-comment', __webpack_require__(/*! ./components/SecondgenComment.vue */ "./resources/js/components/SecondgenComment.vue")["default"]);
 Vue.component('subscribe-component', __webpack_require__(/*! ./components/SubscribeComponent.vue */ "./resources/js/components/SubscribeComponent.vue")["default"]);
 Vue.component('follow-component', __webpack_require__(/*! ./components/FollowComponent.vue */ "./resources/js/components/FollowComponent.vue")["default"]);
 Vue.component('likeunlike-component', __webpack_require__(/*! ./components/LikeunlikeComponent.vue */ "./resources/js/components/LikeunlikeComponent.vue")["default"]);
@@ -50886,6 +51006,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeunlikeComponent_vue_vue_type_template_id_8ce488ca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SecondgenComment.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/SecondgenComment.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SecondgenComment.vue?vue&type=template&id=bef9ed64& */ "./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64&");
+/* harmony import */ var _SecondgenComment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SecondgenComment.vue?vue&type=script&lang=js& */ "./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SecondgenComment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SecondgenComment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondgenComment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SecondgenComment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SecondgenComment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondgenComment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SecondgenComment.vue?vue&type=template&id=bef9ed64& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SecondgenComment.vue?vue&type=template&id=bef9ed64&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondgenComment_vue_vue_type_template_id_bef9ed64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

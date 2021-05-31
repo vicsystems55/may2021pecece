@@ -25,6 +25,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('secondgen-comment', require('./components/SecondgenComment.vue').default);
+
 Vue.component('subscribe-component', require('./components/SubscribeComponent.vue').default);
 
 Vue.component('follow-component', require('./components/FollowComponent.vue').default);
