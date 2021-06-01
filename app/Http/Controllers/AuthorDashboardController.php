@@ -189,6 +189,12 @@ class AuthorDashboardController extends Controller
 
         $notifications = Notification::where('user_id', Auth::user()->id)->latest()->paginate(10);
 
+        $notificationz = Notification::where('user_id', Auth::user()->id)->latest()->take(12)->update([
+            'status' => 'read'
+        ]);
+
+        // dd($notificationz);
+
         return view('dashboard.author.notifications',[
             'notifications' => $notifications
         ]);
