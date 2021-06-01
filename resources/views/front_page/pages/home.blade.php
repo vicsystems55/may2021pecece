@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 <div class="main_slider">
                 <div class="slider" id="main-slider">
 
@@ -99,7 +101,7 @@
                 </div>
                 <div class="next-slides" id="next-slides"></div>
             </div>
-            <section class="articles">
+            {{-- <section class="articles">
                 <div class="wrap">
                     <div class="wrap_float">
                         <h2 class="title">
@@ -169,17 +171,30 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <section class="products">
                 <div class="wrap">
                     <div class="wrap_float">
                     <h2 class="title">
-                           Top Categories
+                           Welcome to Pecece
                         </h2>
-                        <a href="shop-instastore.html" class="cover ie-img">
-                            <h3 class="_title">Instastore</h3>
-                            <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
-                        </a>
+                        {{-- <a href="{{route('register')}}" class="cover ie-img">
+                            <h3 class="_titl">Become an author</h3>
+
+                         
+                            <img src="{{config('app.url')}}meduza/img/become_author.jpg" alt="">
+
+                            
+                        </a> --}}
+
+                        <div style="max-widht: 120px; max-height: 450px; background-image: url({{config('app.url')}}/meduza/img/become_author.jpg); background-size: cover; padding: 10px;" class="cover">
+                            
+                            <h1 style="color: white; margin-top: 45px; text-align: center; font-size: 30pt;">Become an Author</h1>
+                            
+                            <button style="margin-left: 40px; margin-top: 100px; postion: absolute; width:400px; height: 45px; background-color: black; color: white; font-size: 20pt; padding: 5px;" class="button">Sign Up</button>
+
+                          
+                        </div>
                         <div class="products_block" id="products_block">
                             <div class="controls">
                                 <div class="count">

@@ -1983,6 +1983,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1991,7 +2003,8 @@ Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
       loader: "http://localhost/may2021pecece/public/" + 'loader.gif',
       content: '',
       firstgen_comments: '',
-      secondgen_comments: ''
+      secondgen_comments: '',
+      message: ''
     };
   },
   props: ['post_id'],
@@ -2005,11 +2018,22 @@ Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
     getAllComments: function getAllComments() {
       var _this = this;
 
-      alert(this.post_id);
       axios.post('/getAllComments', {
         post_id: this.post_id
       }).then(function (response) {
         return console.log(response), _this.firstgen_comments = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    post_comment: function post_comment() {
+      var _this2 = this;
+
+      axios.post('/post_comment', {
+        message: this.message,
+        post_id: this.post_id
+      }).then(function (response) {
+        return console.log(response), _this2.getAllComments();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2308,7 +2332,6 @@ Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
     getSecondGenComments: function getSecondGenComments() {
       var _this = this;
 
-      alert(this.commentid);
       axios.post('/getSecondGenComments', {
         comment_id: this.commentid
       }).then(function (response) {
@@ -38087,6 +38110,40 @@ var render = function() {
         [
           _vm._m(0),
           _vm._v(" "),
+          _c("div", { staticClass: "write-comment" }, [
+            _c("h2", { staticClass: "title" }, [_vm._v("Your thoughts")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.message,
+                    expression: "message"
+                  }
+                ],
+                staticClass: "textarea",
+                attrs: { placeholder: "Message*" },
+                domProps: { value: _vm.message },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.message = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "submit", on: { click: _vm.post_comment } },
+                [_vm._v("Post Comment")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _vm._l(_vm.firstgen_comments, function(comment) {
             return _c(
               "div",
@@ -38102,7 +38159,17 @@ var render = function() {
               [
                 _c("div", { staticClass: "comment-item" }, [
                   _c("div", { staticClass: "comment-item-top" }, [
-                    _vm._m(1, true),
+                    _c("div", { staticClass: "author" }, [
+                      _vm._m(1, true),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "name" }, [
+                        _vm._v(_vm._s(comment.users.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "date" }, [
+                        _vm._v(_vm._s(comment.created_at))
+                      ])
+                    ]),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -38127,7 +38194,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("secondgen-comment", { attrs: { commentid: "1" } })
+                _c("secondgen-comment", { attrs: { commentid: comment.id } })
               ],
               1
             )
@@ -38138,27 +38205,19 @@ var render = function() {
       _vm._v(" "),
       _c(
         "modal",
-        { attrs: { name: "commenti", height: 1000, adaptive: true } },
+        { attrs: { name: "commenti", height: 400, adaptive: true } },
         [
           _c(
             "div",
             { staticClass: "write-comment", staticStyle: { padding: "10px" } },
             [
-              _c("div", { staticClass: "subtitle" }, [
-                _vm._v(
-                  "\r\n                                            Your email address will not be published. Required fields are marked *\r\n                                        "
-                )
-              ]),
-              _vm._v(" "),
               _c("form", { staticClass: "form" }, [
                 _c("textarea", {
                   staticClass: "textarea",
                   attrs: { placeholder: "Message*" }
                 }),
                 _vm._v(" "),
-                _c("button", { staticClass: "submit" }, [
-                  _vm._v("Post Comment")
-                ])
+                _c("button", { staticClass: "submit" }, [_vm._v("Post Reply")])
               ])
             ]
           )
@@ -38197,16 +38256,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "author" }, [
-      _c("div", { staticClass: "userpic ie-img" }, [
-        _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "name" }, [_vm._v("Victor Shibut")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "date" }, [
-        _vm._v("November 6, 2018 at 8:29 am")
-      ])
+    return _c("div", { staticClass: "userpic ie-img" }, [
+      _c("img", { attrs: { src: "img/demo-bg.jpg", alt: "" } })
     ])
   }
 ]

@@ -126,6 +126,8 @@ Route::post('/unsubscribeCategory', 'CategorySubscriptionController@unsubscribeC
 
 Route::post('/getAllComments', 'CommentController@getAllComments');
 
+Route::post('/post_comment', 'CommentController@post_comment');
+
 Route::post('/getSecondGenComments', 'CommentController@getSecondGenComments');
 
 Route::post('/getFollowers', 'FollowerController@getFollowers');

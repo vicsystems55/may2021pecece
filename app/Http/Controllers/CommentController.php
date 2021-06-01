@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -16,7 +17,7 @@ class CommentController extends Controller
     {
         //
 
-        $allComments = Comment::where('post_id', $request->post_id)->where('parent_id', 0)->latest()->get();
+        $allComments = Comment::with('users')->where('post_id', $request->post_id)->where('parent_id', 0)->latest()->get();
 
         return $allComments;
     }
@@ -43,9 +44,27 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function post_comment(Request $request)
     {
         //
+            try {
+                
+                $user_id = Auth::user()->id;
+
+                $comment = Comment::create([
+                    'user_id' => $user_id,
+                    'comment' => $request->message,
+                    'parent_id' => 0,
+                    'post_id'=> $request->post_id
+                ]);
+
+                return $comment;
+
+            } catch (\Throwable $th) {
+                //throw $th;
+
+                return $th;
+            }
     }
 
     /**

@@ -65,7 +65,7 @@ Vue.use(VModal)
 
             getSecondGenComments(){
 
-                alert(this.commentid)
+          
 
                 axios.post('/getSecondGenComments',{
                      comment_id: this.commentid
