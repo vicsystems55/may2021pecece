@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal success-modal" id="success">
+        {{-- <div class="modal success-modal" id="success">
             <div class="close"></div>
             <div class="wrap">
                 <div class="wrap_float">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         
         <!-- <div style="display: none;">
             <div class="modal modal_default" id="login">
