@@ -38153,7 +38153,8 @@ var render = function() {
                   "border-left": "1px solid grey",
                   "border-bottom": "1px solid grey",
                   padding: "5px",
-                  "margin-bottom": "20px"
+                  "margin-bottom": "20px",
+                  "margin-top": "20px"
                 }
               },
               [
@@ -38226,15 +38227,15 @@ var render = function() {
       _vm._v(" "),
       _c(
         "modal",
-        { attrs: { name: "view_more", height: 1000, adaptive: true } },
+        { attrs: { name: "view_more", height: _vm.auto, scrollable: true } },
         [
           _c(
             "div",
             {
-              staticClass: "write-comment",
-              staticStyle: { padding: "1px", "z-index": "5" }
+              staticClass: "write-commen",
+              staticStyle: { padding: "5px", "z-index": "5" }
             },
-            [_c("h5", [_vm._v("Comments")])]
+            [_c("h5", [_vm._v("Comment")])]
           )
         ]
       )

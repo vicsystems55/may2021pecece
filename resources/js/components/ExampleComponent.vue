@@ -15,7 +15,7 @@
                     </div>
      
 
-                <div v-for="comment in firstgen_comments" :key="comment.id" style="border-left: 1px solid grey; border-bottom: 1px solid grey; padding: 5px; margin-bottom: 20px;">
+                <div v-for="comment in firstgen_comments" :key="comment.id" style="border-left: 1px solid grey; border-bottom: 1px solid grey; padding: 5px; margin-bottom: 20px; margin-top: 20px;">
 
                     <div class="comment-item">
                         <div class="comment-item-top">
@@ -64,14 +64,14 @@
                                 </modal>
 
                                 <modal name="view_more"
-                                    :height="1000"
+                                    :height="auto"
+                                    :scrollable="true"
                                                                  
-                                    :adaptive="true"
+                                   
                                     >
-                                    <div style="padding: 1px; z-index:5;" class="write-comment">
-                                    <h5>Comments</h5>
-                                        
-                                      
+                                    <div style="padding: 5px; z-index:5;" class="write-commen">
+                                    <h5>Comment</h5>
+
                                     </div>
                                 </modal>
 
