@@ -35,7 +35,7 @@
                         </div>
                      
                         <a style="background-color: red;"  href="{{route('author.home')}}" class="cart ">
-                            <span style="width: 220px; height: 220px;" >Sign Up</span>
+                            <span style="width: 220px; height: 220px;" >S</span>
                         </a>
                     </div>
                 </div>

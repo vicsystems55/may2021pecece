@@ -345,6 +345,7 @@ a:active {
   outline: 0;
 }
 button {
+
   display: block;
   float: left;
   border: 0;
@@ -3573,7 +3574,7 @@ body.locked {
     padding-left: 60px;
   }
   .top_panel .top_right {
-    padding-right: 90px;
+    padding-right: 120px;
   }
   .main_slider .next-slides .item.active {
     left: -480px;

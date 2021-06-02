@@ -71,8 +71,12 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{{route('home')}}" class="brand-logo">
-   
-                <img max-width="90px;" max-height="90px;" class="brand-title" src="{{config('app.url')}}logo.png" alt="ff">
+
+           
+                <img max-width="90px;" max-height="90px;" class="logo-abbr" src="{{config('app.url')}}logo.png" alt="ff">
+                <img max-width="90px;" max-height="90px;" class="logo-compact" src="{{config('app.url')}}logo.png" alt="ff">
+            
+
             </a>
 
             <div class="nav-control">
@@ -104,7 +108,7 @@
                             <div class="dashboard_bar">
 								Author's Dashboard
 
-                                <a class="btn btn-sm btn-primary" href="/">Back to Blog Page</a>
+                              
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">

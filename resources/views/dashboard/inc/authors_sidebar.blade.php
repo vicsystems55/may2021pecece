@@ -1,6 +1,9 @@
 <div class="deznav">
             <div class="deznav-scroll">
-				<a href="{{route('author.create_post')}}" class="add-menu-sidebar" data-toggle="modal" data-target="#addOrderModalside" >Create New Post</a>
+				<div class="c text-center p-3">
+					<a href="{{route('author.create_post')}}" class="btn btn-outline-primary btn-block">Back to Blog</a>
+				</div>
+				<a href="{{route('author.create_post')}}" class="add-menu-sidebar">Create New Post</a>
 				<ul class="metismenu" id="menu">
 
                     <li><a href="{{route('author.home')}}" class="ai-icon" aria-expanded="false">
