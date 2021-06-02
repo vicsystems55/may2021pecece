@@ -123,7 +123,7 @@
                                         <h5>No subscriptions yet..</h5>
 
                                         <h4>
-                                            <a href="{{route('user.my_interest')}}">Subscribe to a Category</a>
+                                            <a href="">Subscribe to a Category</a>
                                         </h4>
                                             
                                         @endforelse
