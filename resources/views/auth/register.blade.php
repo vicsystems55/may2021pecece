@@ -9,9 +9,15 @@
                         <a href="index.html"><img src="{{config('app.url')}}logo.png" alt=""></a>
                     </div>
 
-                    <h1 class="display-4 text-center mb-4 text-primary">Pecece</h11>
+                    <h1 class="display-4 text-center mb-4 text-primary">Pecece</h1>
                     
                     <h4 class="text-center mb-4 text-primary">Sign up</h4>
+                    @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <p class="alert alert-warning">{{$error}}</p>
+            @endforeach
+        @endif
+
                     <form method="post" action="{{route('register')}}">
                     @csrf
 
@@ -49,7 +55,7 @@
                         </div>
 
                     <div class="new-account mt-3">
-                        <p class="text-primary">Already have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
+                        <p class="text-primary">Already have an account? <a class="text-primary" href="{{route('login')}}">Sign in</a></p>
                     </div>
                 </div>
             </div>

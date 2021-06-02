@@ -42,8 +42,13 @@ class AuthorDashboardController extends Controller
 
         $my_posts = Post::where('user_id', $user_id)->where('status', '!=','session')->latest()->get();
 
+        $notifications = Notification::where('user_id', $user_id)->where('status', 'unread')->latest()->get()->take(5);
+
+        // dd($notifications);
+
         return view('dashboard.author.home',[
-            'my_posts' => $my_posts
+            'my_posts' => $my_posts,
+            'notifications' => $notifications
         ]);
     }
 
@@ -206,7 +211,15 @@ class AuthorDashboardController extends Controller
     {
         # code...
 
-        return view('dashboard.author.my_profile');
+        $user_data = User::with('followers')->with('posts')->with('user_category_subscriptions.categories')->find(Auth::user()->id);
+
+        
+
+        // dd($user_data->user_category_subscriptions[0]->categories);
+
+        return view('dashboard.author.my_profile',[
+            'user_data' => $user_data
+        ]);
     }
 
     public function settings() 

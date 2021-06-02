@@ -14,6 +14,6 @@ class CategorySubscription extends Model
 
         # code...
 
-        return $this->hasMany('App\Category', 'category_id', 'id');
+        return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 }

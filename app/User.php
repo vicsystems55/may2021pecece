@@ -99,7 +99,7 @@ class User extends Authenticatable
     {
         # code...
 
-        return $this->hasMany('App\Follower', 'user_id', 'id');
+        return $this->hasMany('App\Follower', 'author_id', 'id');
     }
 
     public function authors()
