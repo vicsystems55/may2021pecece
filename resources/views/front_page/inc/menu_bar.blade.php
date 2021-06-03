@@ -33,10 +33,22 @@
                       
                            
                         </div>
-                     
-                        <a style="background-color: red;"  href="{{route('author.home')}}" class="cart ">
-                            <span style="width: 220px; height: 220px;" >S</span>
+
+                        @auth()
+
+                        <a style="background-color: rgb(16, 1, 1);"  href="{{route('author.home')}}" class="cart">
+                            <span style="width: 220px; height: 220px;" >Dashboard</span>
                         </a>
+
+                        @else 
+
+                        <a style="background-color: rgb(16, 1, 1);"  href="{{route('login')}}" class="cart">
+                            <span style="width: 220px; height: 220px;" >Login</span>
+                        </a>
+
+                        @endauth
+                     
+         
                     </div>
                 </div>
             </div>
