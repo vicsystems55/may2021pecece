@@ -125,7 +125,7 @@
                                 <div id="DZ_W_Todo1" class="widget-media dz-scroll height370">
                                     <ul class="timeline">
 
-                                        @forelse ($notifications as $notificaiton)
+                                        @forelse ($notifications as $notification)
 
                                         <li>
                                             <div class="timeline-panel">

@@ -3515,8 +3515,17 @@ body.locked {
     margin-left: -748px;
   }
   .main_slider .slider .slide_right {
-    width: 680px;
+    display: block;
+    width: 50%;
+    height: 130%;
+    position: absolute;
+    right: 0;
+    
+   
+    
   }
+
+
 }
 @media screen and (max-height: 980px) and (min-width: 1300px) {
   .main_slider .next-slides {

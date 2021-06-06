@@ -26,7 +26,7 @@
                                 <div class="slide_right" data-slide="{{config('app.url')}}post_images/{{$post->posts->featured_image}}">
                                     <div class="slide-img" style="background-image: url({{config('app.url')}}post_images/{{$post->posts->featured_image}})"></div>
                                     <div class="read_more">
-                                        <a href="post-page-fullwidth.html">Read more</a>
+                                        <a href="{{route('single_post', $post->posts->post_code)}}">Read more</a>
                                     </div>
                                 </div>
                             </div>
