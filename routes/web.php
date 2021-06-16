@@ -136,6 +136,8 @@ Route::post('/followAuthor', 'FollowerController@followAuthor');
 
 Route::post('/unfollowAuthor', 'FollowerController@unfollowAuthor');
 
+Route::post('/query_posts', 'SearchController@query_posts')->name('query_posts');
+
 
 
 // Route::get('/home', 'HomeController@index')->name('home');

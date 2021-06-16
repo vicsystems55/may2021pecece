@@ -31,8 +31,13 @@
 
         <div class="search-popup" id="search-popup">
             <div class="close"></div>
-            <input type="text" class="input" placeholder="Search the blog…">
-            <button class="submit submit-search"><span>SEARCH</span></button>
+
+            <form action="{{route('query_posts')}}" method="post">
+                @csrf
+                <input name="key" type="text" class="input" placeholder="Search the blog_">
+                <button type="submit" class="submit submit-search"><span>SEARCH</span></button>
+            </form>
+
         </div>
         <div class="overlay" id="overlay"></div>
 
