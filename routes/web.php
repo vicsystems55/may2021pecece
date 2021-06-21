@@ -75,6 +75,14 @@ Route::group(['middleware' => ['auth'],'prefix'=> 'author'], function () {
 
     Route::get('/settings', 'AuthorDashboardController@settings')->name('author.settings');
 
+    //credential update
+
+    Route::post('/update_email', 'AuthorDashboardController@update_email')->name('author.update_email');
+
+    Route::post('/update_password', 'AuthorDashboardController@update_password')->name('author.update_password');
+
+    Route::post('/update_username', 'AuthorDashboardController@update_username')->name('author.update_username');
+
 
 
 });

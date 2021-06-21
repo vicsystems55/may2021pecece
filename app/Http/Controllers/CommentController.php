@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
+use App\Notification;
+
+use App\UserWallet;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -51,12 +55,35 @@ class CommentController extends Controller
                 
                 $user_id = Auth::user()->id;
 
+                $post = Post::where('id', $request->post_id)->first();
+
                 $comment = Comment::create([
                     'user_id' => $user_id,
                     'comment' => $request->message,
                     'parent_id' => 0,
                     'post_id'=> $request->post_id
                 ]);
+
+                $notifier = Notification::create([
+                    'user_id' => $post->user_id,
+                    'color_code' => '#FF9909',
+                    'title' => 'New Comment',
+                    'message' => 'You just recevied a comment on your post :' .$post->post_title,
+                    ]);
+
+                    $user_wallet = UserWallet::Create([
+                        'user_id' => $post->user_id,
+                        'amount' => 0.1,
+                        'description' => 'New Comment',
+                        'credit' => '1',
+                    ]);
+        
+                    $notify_author = Notification::create([
+                        'user_id' => $post->user_id,
+                        'color_code' => '#FF9909',
+                        'title' => 'Credit Received',
+                        'message' => 'You just received 0.1 Pecece Credits on new comment received',
+                    ]);
 
                 return $comment;
 

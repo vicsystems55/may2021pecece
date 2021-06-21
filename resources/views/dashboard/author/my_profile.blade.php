@@ -136,6 +136,16 @@
                         </div>
                     </div>
                     <div class="col-xl-8">
+                        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                            <p class="alert alert-warning">{{$error}}</p>
+                        @endforeach
+                    @endif
+
+            @if(Session::has('message'))
+            <p class="alert alert-info">{{ Session::get('message') }}</p>
+            @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <div class="profile-tab">
@@ -235,20 +245,21 @@
 
                                                     <div class="settings-form pt-5">
                                                         <h4 class="text-primary">Change Password</h4>
-                                                        <form>
+                                                        <form method="post" action="{{route('author.update_password')}}">
+                                                            @csrf
                                                             <div class="form">
                                                                 <div class="form-group col-md-6">
                                                                     <label>Old Password</label>
-                                                                    <input type="email" placeholder="Email" class="form-control">
+                                                                    <input type="text" name="old_password" placeholder="Old Password" class="form-control">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label>New Password</label>
-                                                                    <input type="password" placeholder="Password" class="form-control">
+                                                                    <input type="password" name="new_password" placeholder="New Password" class="form-control">
                                                                 </div>
 
                                                                 <div class="form-group col-md-6">
                                                                     <label>Confirm New Password</label>
-                                                                    <input type="password" placeholder="Password" class="form-control">
+                                                                    <input type="password" name="new_password_confirmation" placeholder="Confirm New Password" class="form-control">
                                                                 </div>
                                                             </div>
                                                 
@@ -258,21 +269,19 @@
 
                                                     <div class="settings-form pt-5">
                                                         <h4 class="text-primary">Change Username</h4>
-                                                        <form>
+                                                        <form method="post" action="{{route('author.update_username')}}">
+                                                            @csrf
                                                             <div class="form">
                                                                 <div class="form-group col-md-6">
                                                                     <label>Old Username</label>
-                                                                    <input type="text" placeholder="Email" class="form-control">
+                                                                    <input type="text" placeholder="Username" class="form-control" value="{{Auth::user()->username}}">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label>New Username</label>
-                                                                    <input type="text" placeholder="Password" class="form-control">
+                                                                    <input type="text" name="username" placeholder="New Username" class="form-control">
                                                                 </div>
 
-                                                                <div class="form-group col-md-6">
-                                                                    <label>Confirm New Username</label>
-                                                                    <input type="text" placeholder="Password" class="form-control">
-                                                                </div>
+                                                             
                                                             </div>
                                                 
                                                             <button class="btn btn-primary" type="submit">Change Username</button>
@@ -280,21 +289,19 @@
                                                     </div>
                                                     <div class="settings-form pt-5">
                                                         <h4 class="text-primary">Change Email</h4>
-                                                        <form>
+                                                        <form method="post" action="{{route('author.update_email')}}">
+                                                            @csrf
                                                             <div class="form">
                                                                 <div class="form-group col-md-6">
-                                                                    <label>Old Username</label>
-                                                                    <input type="email" placeholder="Email" class="form-control">
+                                                                    <label>Old Email</label>
+                                                                    <input type="email" placeholder="Email" class="form-control" value="{{Auth::user()->email}}">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label>New Username</label>
-                                                                    <input type="email" placeholder="Password" class="form-control">
+                                                                    <label>New Email</label>
+                                                                    <input type="email" name="email" placeholder="New Email" class="form-control">
                                                                 </div>
 
-                                                                <div class="form-group col-md-6">
-                                                                    <label>Confirm New Username</label>
-                                                                    <input type="email" placeholder="Password" class="form-control">
-                                                                </div>
+                                                            
                                                             </div>
                                                 
                                                             <button class="btn btn-primary" type="submit">Change Email</button>

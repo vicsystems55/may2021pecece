@@ -55,16 +55,16 @@
                                     <div style="padding: 10px;" class="write-comment">
                                         
                                      
-                                        <form class="form">
+                                        <div class="form">
                                             <textarea class="textarea" placeholder="Message*"></textarea>
                                           
                                             <button class="submit">Post Reply</button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </modal>
 
                                 <modal name="view_more"
-                                    :height="auto"
+                                    
                                     :scrollable="true"
                                                                  
                                    
@@ -88,6 +88,9 @@ import VModal from 'vue-js-modal'
 
 
 Vue.use(VModal)
+
+
+
 
     export default {
 
@@ -118,6 +121,8 @@ Vue.use(VModal)
             },
 
             getAllComments(){
+
+                
 
                 
 

@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "moment": "^2.29.1",
         "vue-js-modal": "*",
         "vue-my-toasts": "^2.0.1",
         "vue-toast-notification": "^0.6.1",

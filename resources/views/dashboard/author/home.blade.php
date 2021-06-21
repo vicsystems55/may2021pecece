@@ -88,7 +88,7 @@
                                     <div class="media-body ml-1">
                                         <p class="mb-2 text-primary font-weight-bold">Wallet</p>
                                         <div class="d-flex align-items-center">
-                                            <h3 class="mb-0 mr-3 text-black font-w600">0 PCREDITS</h3>
+                                            <h3 class="mb-0 mr-3 text-black font-w600">{{$balance}} PCREDITS</h3>
                                          
                                         </div>
                                     </div>

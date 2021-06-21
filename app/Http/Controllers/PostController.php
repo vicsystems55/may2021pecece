@@ -6,9 +6,11 @@ use App\Post;
 use App\PostLike;
 use App\PostUnLike;
 use App\Notification;
+use App\UserWallet;
 use App\User;
 use FeedReader;
 use Auth;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -86,7 +88,21 @@ class PostController extends Controller
             'user_id' => $user_id,
             'color_code' => '#FF9909',
             'title' => 'New Post Created',
-            'message' => 'You just create a new post with title: ' .$request->post_title,
+            'message' => 'You just created a new post with title: ' .$request->post_title,
+        ]);
+
+        UserWallet::Create([
+            'user_id' => $user_id,
+            'amount' => 0.5,
+            'description' => 'New Post Creation',
+            'credit' => '1',
+        ]);
+
+        $notify_author = Notification::create([
+            'user_id' => $user_id,
+            'color_code' => '#FF9909',
+            'title' => 'Credit Received',
+            'message' => 'Your just received 0.1 PC on a new post published',
         ]);
 
 
@@ -357,6 +373,25 @@ class PostController extends Controller
             'title' => 'Post Liked',
             'message' => 'Your post :' .$post_data->post_title  .' just got liked by ' .$user_data->username,
         ]);
+
+        if ($request->user_id != $authors_id) {
+            # code...
+            UserWallet::Create([
+                'user_id' => $authors_id,
+                'amount' => 0.1,
+                'description' => 'Like Received',
+                'credit' => '1',
+            ]);
+    
+            $notify_author = Notification::create([
+                'user_id' => $authors_id,
+                'color_code' => '#FF9909',
+                'title' => 'Credit Received',
+                'message' => 'Your just received 0.1 PC on a post like received',
+            ]);
+        }
+
+
     
             return $post_liked;
 
@@ -407,6 +442,23 @@ class PostController extends Controller
                 'title' => 'Post Uniked',
                 'message' => 'Your post :' .$post_data->post_title  .' just got unliked by ' .$user_data->username,
             ]);
+
+            if ($request->user_id != $authors_id) {
+                # code...
+                UserWallet::Create([
+                    'user_id' => $authors_id,
+                    'amount' => 0.1,
+                    'description' => 'Like Received',
+                    'credit' => '1',
+                ]);
+        
+                $notify_author = Notification::create([
+                    'user_id' => $authors_id,
+                    'color_code' => '#FF9909',
+                    'title' => 'Credit Received',
+                    'message' => 'Your just received 0.1 PC on a post like received',
+                ]);
+            }
 
     
             return $post_unliked;

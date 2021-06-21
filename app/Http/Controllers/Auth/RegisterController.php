@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\UserWallet;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,11 +66,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user_wallet = UserWallet::Create([
+            'user_id' => $user->id,
+            'amount' => 5,
+            'description' => 'New Signup Bonus',
+            'credit' => '1',
+        ]);
+
+        $notify_author = Notification::create([
+            'user_id' => $user->id,
+            'color_code' => '#FF9909',
+            'title' => 'Credit Received',
+            'message' => 'You just received 5 Pecece Credits for your new signup',
+        ]);
+
+        
+
+        return $user;
+
+
     }
 }

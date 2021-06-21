@@ -11,6 +11,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\UserWallet;
+use App\Notification;
 use DB;
 
 use Socialite;
@@ -55,6 +57,21 @@ class SocialiteController extends Controller
                 'provider_id' => $user->getId(),
                 'password' => Hash::make($user->getEmail()),
             ]);
+
+            $user_wallet = UserWallet::Create([
+                'user_id' => $user_data->id,
+                'amount' => 5,
+                'description' => 'New Signup Bonus',
+                'credit' => '1',
+            ]);
+
+            $notify_author = Notification::create([
+                'user_id' => $user->id,
+                'color_code' => '#FF9909',
+                'title' => 'Credit Received',
+                'message' => 'You just received 5 Pecece Credits for your new signup',
+            ]);
+    
     
             
     

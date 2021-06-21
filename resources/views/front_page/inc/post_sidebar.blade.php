@@ -5,7 +5,7 @@
 
                                         @forelse($popular_posts as $post)
 
-                                        <a href="post-page-right-sidebar.html" class="item">
+                                        <a href="{{route('single_post', $post->post_code)}}" class="item">
                                             <div class="img ie-img">
                                                 <img src="{{config('app.url')}}post_images/{{$post->featured_image}}" alt="">
                                             </div>

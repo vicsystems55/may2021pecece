@@ -40,7 +40,6 @@ Vue.component('likeunlike-component', require('./components/LikeunlikeComponent.
  */
 
 
-
 const app = new Vue({
     el: '#app',
 });

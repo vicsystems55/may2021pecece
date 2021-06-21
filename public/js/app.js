@@ -38212,7 +38212,7 @@ var render = function() {
             "div",
             { staticClass: "write-comment", staticStyle: { padding: "10px" } },
             [
-              _c("form", { staticClass: "form" }, [
+              _c("div", { staticClass: "form" }, [
                 _c("textarea", {
                   staticClass: "textarea",
                   attrs: { placeholder: "Message*" }
@@ -38225,20 +38225,16 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "modal",
-        { attrs: { name: "view_more", height: _vm.auto, scrollable: true } },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "write-commen",
-              staticStyle: { padding: "5px", "z-index": "5" }
-            },
-            [_c("h5", [_vm._v("Comment")])]
-          )
-        ]
-      )
+      _c("modal", { attrs: { name: "view_more", scrollable: true } }, [
+        _c(
+          "div",
+          {
+            staticClass: "write-commen",
+            staticStyle: { padding: "5px", "z-index": "5" }
+          },
+          [_c("h5", [_vm._v("Comment")])]
+        )
+      ])
     ],
     1
   )

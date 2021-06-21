@@ -28,6 +28,10 @@ use App\Category;
 
 use Carbon\Carbon;
 
+use App\UserWallet;
+
+use Illuminate\Support\Facades\Hash;
+
 use Auth;
 
 class AuthorDashboardController extends Controller
@@ -44,11 +48,16 @@ class AuthorDashboardController extends Controller
 
         $notifications = Notification::where('user_id', $user_id)->where('status', 'unread')->latest()->get()->take(5);
 
+        $credit = UserWallet::where('user_id', $user_id)->where('credit', '1')->sum('amount');
+        $debit = UserWallet::where('user_id', $user_id)->where('debit', '0')->sum('amount');
+
+        $balance = $credit - $debit;
         // dd($notifications);
 
         return view('dashboard.author.home',[
             'my_posts' => $my_posts,
-            'notifications' => $notifications
+            'notifications' => $notifications,
+            'balance' => $balance
         ]);
     }
 
@@ -157,15 +166,35 @@ class AuthorDashboardController extends Controller
     public function authors_feed() 
     {
         # code...
+        $user_id = Auth::user()->id;
 
-        return view('dashboard.author.authors_feed');
+        $all_authors = Follower::where('follower_id', $user_id)->get()->pluck('author_id');
+
+        $feeds = Post::with('post_authors')->with('post_categories')->where('status', 'live')->whereIn('user_id', $all_authors)->get();
+
+        // dd($feeds);
+
+
+
+        return view('dashboard.author.authors_feed',[
+            'feeds' => $feeds
+        ]);
     }
 
     public function categories_feed() 
     {
         # code...
+        $user_id = Auth::user()->id;
 
-        return view('dashboard.author.categories_feed');
+        $all_categories = CategorySubscription::where('user_id', $user_id)->get()->pluck('category_id');
+
+        $feeds = Post::with('post_authors')->with('post_categories')->where('status', 'live')->whereIn('category_id', $all_categories)->get();
+
+        // dd($feeds);
+
+        return view('dashboard.author.categories_feed',[
+            'feeds' => $feeds
+        ]);
     }
 
     public function my_interest() 
@@ -228,5 +257,111 @@ class AuthorDashboardController extends Controller
 
         return view('dashboard.author.settings');
     }
+
+    public function update_password(Request $request) 
+    {
+        # code...
+        $request->validate([
+            'new_password' =>  ['required', 'string', 'min:8', 'confirmed'],
+            // 'amount' => 'required|numeric|min:99700|between:0,99.99',
+            // 'number_of_accounts' => 'required|numeric|min:1|max:15',
+            // 'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            
+        ]);
+        
+
+        $user_id = Auth::user()->id;
+
+        $hash = Hash::make($request->old_password);
+
+        
+
+        if (1==1) {
+            # code...
+            $user_data = User::where('id', $user_id)->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+            return back()->with('message', 'Password updated successfully');
+
+        }else{
+            return back()->with('message', 'This is not your old password');
+        }
+
+
+       
+
+       
+    }
+
+    public function update_email(Request $request) 
+    {
+        # code...
+        $user_id = Auth::user()->id;
+        $request->validate([
+            'email' =>  ['required', 'string', 'max:255', 'unique:users'],
+            
+            // 'amount' => 'required|numeric|min:99700|between:0,99.99',
+            // 'number_of_accounts' => 'required|numeric|min:1|max:15',
+            // 'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            
+        ]);
+        
+        if (1==1) {
+            # code...
+            $user_data = User::where('id', $user_id)->update([
+                'email' => $request->email,
+            ]);
+            return back()->with('message', 'Email updated successfully');
+
+        }else{
+            return back()->with('message', 'This is not your old email');
+        }
+
+
+        
+
+    }
+
+    public function update_username(Request $request) 
+    {
+        # code...
+
+        $user_id = Auth::user()->id;
+        $request->validate([
+            'username' =>  ['required', 'string', 'max:255', 'unique:users'],
+            // 'amount' => 'required|numeric|min:99700|between:0,99.99',
+            // 'number_of_accounts' => 'required|numeric|min:1|max:15',
+            // 'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            
+        ]);
+
+        
+
+        $user_data = User::where('id', $user_id)->update([
+            'username' => $request->username,
+        ]);
+
+        return back()->with('message', 'Username updated successfully');
+
+        if ($request->email == Auth::user()->email) {
+            # code...
+            $user_data = User::where('id', $user_id)->update([
+                'email' => $request->new_email,
+            ]);
+
+            return back()->with('message', 'Username updated successfully');
+
+        }else{
+            return back()->with('message', 'This is not your old email');
+        }
+
+
+        return back()->with('message', 'Email updated successfully');
+
+    }
+
+    
+
+
 
 }
