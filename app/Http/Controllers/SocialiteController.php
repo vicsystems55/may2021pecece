@@ -66,7 +66,7 @@ class SocialiteController extends Controller
             ]);
 
             $notify_author = Notification::create([
-                'user_id' => $user->id,
+                'user_id' => $user_data->id,
                 'color_code' => '#FF9909',
                 'title' => 'Credit Received',
                 'message' => 'You just received 5 Pecece Credits for your new signup',
