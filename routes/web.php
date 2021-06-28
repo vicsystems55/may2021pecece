@@ -104,7 +104,7 @@ Route::post('/create_post', 'PostController@create_post')->name('create_post');
 
 Route::get('/draft_post', 'PostController@draft_post')->name('draft_post');
 
-Route::get('/edit_post', 'PostController@edit_post')->name('edit_post');
+Route::post('/edit_post', 'PostController@edit_post')->name('edit_post');
 
 Route::get('/trash_post', 'PostController@trash_post')->name('trash_post');
 

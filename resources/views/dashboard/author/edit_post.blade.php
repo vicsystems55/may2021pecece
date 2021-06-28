@@ -278,8 +278,12 @@
 
            alert('jk');
                 $.ajax({
-                    type:'GET',
+                    type:'POST',
                     url: "{{ route('edit_post')}}",
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    enctype: 'multipart/form-data',
                         data:
                             {
                                 post_title: post_title,
