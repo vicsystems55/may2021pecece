@@ -100,7 +100,7 @@ Route::post('/update_post_image', 'PostController@update_post_image')->name('upd
 
 Route::post('/upload', 'PostController@store')->name('upload.store');
 
-Route::get('/create_post', 'PostController@create_post')->name('create_post');
+Route::post('/create_post', 'PostController@create_post')->name('create_post');
 
 Route::get('/draft_post', 'PostController@draft_post')->name('draft_post');
 

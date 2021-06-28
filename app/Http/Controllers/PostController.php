@@ -106,7 +106,7 @@ class PostController extends Controller
         ]);
 
 
-        return $post;
+        return 123;
 
     }
 

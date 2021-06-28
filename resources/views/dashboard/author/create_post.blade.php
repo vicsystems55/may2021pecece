@@ -270,8 +270,12 @@
 
            
                 $.ajax({
-                    type:'GET',
+                    type:'POST',
                     url: "{{ route('create_post')}}",
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    enctype: 'multipart/form-data',
                         data:
                             {
                                 post_title: post_title,
@@ -320,7 +324,7 @@
 
        
 
-        console.log(post_body);
+        // console.log(post_body);
         
     }
 
@@ -455,7 +459,7 @@
 
 
 
-        console.log(post_body);
+        // console.log(post_body);
 
 }
 
