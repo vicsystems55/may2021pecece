@@ -64,7 +64,7 @@
                                     </div>
                                     
                                         @include('front_page.inc.post_author')
-                                    <div class="post-nav">
+                                    {{-- <div class="post-nav">
                                         <a class="post next">
                                             <div class="img ie-img">
                                                 <img src="{{config('app.url')}}meduza/img/demo-bg.jpg" alt="">
@@ -85,7 +85,7 @@
                                             </h4>
                                             <div class="_date">October 26, 2018</div>
                                         </a>
-                                    </div>
+                                    </div> --}}
 
                                     <example-component post_id="{{$post_data->id}}"></example-component>
 
@@ -93,7 +93,7 @@
                                    
 
 
-                                  @include('front_page.inc.related_post')
+                                  {{-- @include('front_page.inc.related_post') --}}
 
 
                                 </div>

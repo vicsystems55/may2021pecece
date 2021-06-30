@@ -92,7 +92,7 @@
                                     
                                     </div>
                                 </div>
-                                <div class="_block popular popular-news">
+                                {{-- <div class="_block popular popular-news">
                                     <h3 class="block_title">Popular From News</h3>
                                     <div class="_items">
                                         <a href="post-page-right-sidebar.html" class="item">
@@ -119,5 +119,5 @@
                                             <div class="date">October 26, 2018</div>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </aside>
