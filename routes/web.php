@@ -146,6 +146,10 @@ Route::post('/unfollowAuthor', 'FollowerController@unfollowAuthor');
 
 Route::post('/query_posts', 'SearchController@query_posts')->name('query_posts');
 
+Route::get('/get_wp_posts', 'PostController@get_wp_posts')->name('get_wp_posts');
+
+
+
 
 
 // Route::get('/home', 'HomeController@index')->name('home');

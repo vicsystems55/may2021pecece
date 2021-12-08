@@ -29,7 +29,7 @@
 
                         <a href="{{route('single_post', $post->post_code)}}" class="post">
                             <div class="_image ie-img">
-                                <img src="{{config('app.url')}}post_images/{{$post->featured_image}}" alt="">
+                                <img src="{{$post->featured_image}}" alt="">
                             </div>
                             <div class="_content">
                                 <div class="_category">{{$post->post_categories->name}}</div>

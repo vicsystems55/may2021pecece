@@ -14,7 +14,7 @@
                         <div class="post-content">
                             <main class="main">
                                 <div class="post-image ie-img">
-                                    <img src="{{config('app.url')}}post_images/{{$post_data->featured_image}}" alt="">
+                                    <img src="{{$post_data->featured_image}}" alt="">
                                 </div>
                                 <div class="post-head">
                                     <div class="category">
@@ -116,9 +116,9 @@
             <div class="links">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{config('app.url')}}single_post/{{$post_data->post_code}}" class="link facebook"></a>
                 <a href="#" class="link pinterest"></a>
-                <a href="#" class="link twitter"></a>
+                {{-- <a href="#" class="link twitter"></a>
                 <a href="#" class="link linked"></a>
-                <a href="#" class="link email"></a>
+                <a href="#" class="link email"></a> --}}
             </div>
         </div>
     </div>

@@ -10,6 +10,8 @@ use App\UserWallet;
 use App\User;
 use FeedReader;
 use Auth;
+use Illuminate\Support\Facades\Http;
+
 
 use Illuminate\Http\Request;
 
@@ -33,12 +35,37 @@ class PostController extends Controller
         $image->move(public_path('post_images'), $newname);
 
         $post = Post::where('post_code', $post_code)->update([
-            'featured_image' => $newname
+            'featured_image' => config('app.url').'post_images/'.$newname
         ]);
 
         return $newname;
 
         
+    }
+
+    public function get_wp_posts()
+    {
+        $response = Http::get('https://repo.pecece.com/wp-json/wp/v2/posts?per_page=26');
+
+        $posts = $response->json();
+
+        for ($i=0; $i < count($posts) ; $i++) { 
+            # code...
+            Post::create([
+            'user_id' => 1,
+            'post_code' => rand(1000, 99000),
+            'post_title' => $posts[$i]['title']['rendered'],
+            'post_description' => $posts[$i]['yoast_head_json']['og_description'],
+            'post_body' => $posts[$i]['content']['rendered'],
+            'category_id' => 1,
+            'featured_image' => ($posts[$i]['yoast_head_json']['og_image'][0]['url'])??config('app.url').'post_images/default.png',
+            'status' => 'live',
+            ]);
+        }
+
+  
+        
+        return count($posts);
     }
 
     public function update_post_image(Request $request)
