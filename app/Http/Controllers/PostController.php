@@ -45,7 +45,7 @@ class PostController extends Controller
 
     public function get_wp_posts()
     {
-        $response = Http::get('https://repo.pecece.com/wp-json/wp/v2/posts?per_page=26');
+        $response = Http::get('https://repo.pecece.com/wp-json/wp/v2/posts?per_page=100');
 
         $posts = $response->json();
 
