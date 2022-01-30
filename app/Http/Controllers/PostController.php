@@ -51,7 +51,9 @@ class PostController extends Controller
 
         for ($i=0; $i < count($posts) ; $i++) { 
             # code...
-            Post::create([
+            Post::updateOrcreate([
+                'post_title' => $posts[$i]['title']['rendered']
+            ],[
             'user_id' => 1,
             'post_code' => rand(1000, 99000),
             'post_title' => $posts[$i]['title']['rendered'],
