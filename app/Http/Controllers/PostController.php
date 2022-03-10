@@ -540,8 +540,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function all_posts()
     {
         //
+        $posts = Post::latest()->get();
+
+        return $posts;
     }
 }
