@@ -587,11 +587,41 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function all_posts()
+    public function all_posts(Request $request)
     {
         //
-        $posts = Post::with('post_categories')->latest()->get();
 
-        return $posts;
+
+        if ($request->post_id) {
+            # code...
+
+            try {
+                //code...
+
+                $post = Post::where('id', $request->post_id)->with('post_categories')->first();
+
+                return $post;
+
+            } catch (\Throwable $th) {
+                //throw $th;
+
+                return $th;
+            }
+            
+
+        }
+        else{
+           try {
+               //code...
+               $posts = Post::with('post_categories')->latest()->get();
+
+               return $posts;
+           } catch (\Throwable $th) {
+               //throw $th;
+
+               return $th;
+           }
+        }
+       
     }
 }
