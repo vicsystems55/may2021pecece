@@ -47,7 +47,51 @@ class PostController extends Controller
     {
         $response = Http::get('https://repo.pecece.com/wp-json/wp/v2/posts?per_page=100');
 
+
+
         $posts = $response->json();
+
+        if ($posts[$i]['categories'] == 33) {
+            # code...
+
+            $category_id = 5;
+        }
+
+        if ($posts[$i]['categories'] == 29) {
+            # code...
+
+            $category_id = 1;
+        }
+
+        if ($posts[$i]['categories'] == 30) {
+            # code...
+
+            $category_id = 2;
+        }
+
+        if ($posts[$i]['categories'] == 31) {
+            # code...
+
+            $category_id = 3;
+        }
+
+        if ($posts[$i]['categories'] == 32) {
+            # code...
+
+            $category_id = 4;
+        }
+
+        if ($posts[$i]['categories'] == 34) {
+            # code...
+
+            $category_id = 6;
+        }
+
+        if ($posts[$i]['categories'] == 35) {
+            # code...
+
+            $category_id = 7;
+        }
 
         for ($i=0; $i < count($posts) ; $i++) { 
             # code...
