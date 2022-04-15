@@ -21,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/posts', 'PostController@all_posts')->name('getPosts');
 
 
+Route::get('/categories', 'CategoryController@categories')->name('categories');
+
+

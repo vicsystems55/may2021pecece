@@ -613,7 +613,7 @@ class PostController extends Controller
         else{
            try {
                //code...
-               $posts = Post::with('post_categories')->latest()->get();
+               $posts = Post::with('post_authors')->with('post_categories')->latest()->get();
 
                return $posts;
            } catch (\Throwable $th) {
